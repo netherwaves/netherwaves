@@ -10,7 +10,7 @@ categoryGroups:
         hasUrls: false
         uriFormat: null
         template: null
-dateModified: 1574345686
+dateModified: 1634442506
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SITE_NAME
@@ -326,7 +326,7 @@ sites:
     siteGroup: 8c7f591a-8b93-4e6e-9028-647b8f681e09
     name: Boilerplate
     handle: default
-    language: en-US
+    language: en-CA
     hasUrls: true
     baseUrl: $APP_URL
     sortOrder: 1
