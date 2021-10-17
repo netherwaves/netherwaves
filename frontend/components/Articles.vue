@@ -4,7 +4,7 @@
             Laden...
         </div>
         <div v-else>
-            <article v-for="article in articles">
+            <article v-for="(article, i) in articles" :key="i">
                 <h2 class="text-2xl font-bold">{{ article.title }}</h2>
 
                 <div class="mt-5">
@@ -60,7 +60,7 @@
                     return {
                         limit: this.limit,
                     }
-                }
+                },
             }
         },
 

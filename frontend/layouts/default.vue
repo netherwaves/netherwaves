@@ -1,18 +1,17 @@
 <template>
     <div>
-        <v-navigation/>
+        <v-header/>
         <nuxt/>
-        <v-footer/>
     </div>
 </template>
 
 <script>
-    import Navigation from '~/components/Navigation.vue';
+    import Header from '~/components/Header.vue';
     import Footer from '~/components/Footer.vue';
 
     export default {
         components: {
-            'v-navigation': Navigation,
+            'v-header': Header,
             'v-footer': Footer,
         }
     }
@@ -20,6 +19,10 @@
 
 <style>
     body {
-        @apply font-sans
+        @apply font-sans;
+        letter-spacing: 0.03em;
+        font-size: 18px;
+
+        background-color: #DFBCC4;
     }
 </style>
