@@ -1,0 +1,339 @@
+categoryGroups:
+  ed81e0e2-d805-41f7-9484-b6427fdb98dd:
+    name: Topics
+    handle: topics
+    structure:
+      uid: f8e98e90-abe9-420c-91ef-e24d645ef464
+      maxLevels: null
+    siteSettings:
+      95e89cc5-91be-44e4-833a-5d3017e3601f:
+        hasUrls: false
+        uriFormat: null
+        template: null
+dateModified: 1574345686
+email:
+  fromEmail: $SYSTEM_EMAIL_ADDRESS
+  fromName: $SITE_NAME
+  template: ''
+  transportSettings: null
+  transportType: craft\mail\transportadapters\Sendmail
+fieldGroups:
+  37dec144-66f8-4a73-95c4-c9ef177c9364:
+    name: Globals
+  637310c2-57c6-494d-aab6-8bee7b82c1df:
+    name: Common
+  fd61749a-9c2a-452c-828c-27030549f21d:
+    name: Misc
+fields:
+  14caf314-7482-49ee-a507-ed522a769a10:
+    name: Place
+    handle: place
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    fieldGroup: 37dec144-66f8-4a73-95c4-c9ef177c9364
+    contentColumnType: text
+  19334b67-3de4-4763-9eff-3f56e0fd2a3f:
+    name: Phone
+    handle: phone
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    fieldGroup: 37dec144-66f8-4a73-95c4-c9ef177c9364
+    contentColumnType: text
+  49df95d1-9335-456f-9975-732e1f464aec:
+    name: Topics
+    handle: topics
+    instructions: ''
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Categories
+    settings:
+      branchLimit: ''
+      limit: null
+      localizeRelations: false
+      selectionLabel: 'Add a topic'
+      source: 'group:ed81e0e2-d805-41f7-9484-b6427fdb98dd'
+      sources: '*'
+      targetSiteId: null
+      viewMode: null
+    fieldGroup: 637310c2-57c6-494d-aab6-8bee7b82c1df
+    contentColumnType: string
+  5e3f228d-3db1-4546-ab5e-389f4f36ec12:
+    name: SEO
+    handle: seo
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: nystudio107\seomatic\fields\SeoSettings
+    settings:
+      elementDisplayPreviewType: google
+      facebookTabEnabled: ''
+      generalEnabledFields:
+        - seoTitle
+        - seoDescription
+        - seoImage
+      generalTabEnabled: '1'
+      sitemapTabEnabled: ''
+      twitterTabEnabled: ''
+    fieldGroup: 637310c2-57c6-494d-aab6-8bee7b82c1df
+    contentColumnType: text
+  728e68fc-7333-4d76-9aa9-f8b1ec45263b:
+    name: Address
+    handle: address
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    fieldGroup: 37dec144-66f8-4a73-95c4-c9ef177c9364
+    contentColumnType: text
+  8a58b2d5-25c9-4778-8539-75d647defee3:
+    name: URL
+    handle: href
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\Url
+    settings:
+      placeholder: ''
+    fieldGroup: fd61749a-9c2a-452c-828c-27030549f21d
+    contentColumnType: string(255)
+  aeaba914-7f69-4d49-85aa-0a9be07aa22d:
+    name: Body
+    handle: body
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\redactor\Field
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      columnType: text
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: ''
+      removeInlineStyles: '1'
+      removeEmptyTags: '1'
+      removeNbsp: '1'
+    fieldGroup: 637310c2-57c6-494d-aab6-8bee7b82c1df
+    contentColumnType: text
+  c19db8b1-6e8c-4d55-b29d-fa429a504ca4:
+    name: 'Postal Code'
+    handle: postalCode
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      charLimit: ''
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+    fieldGroup: 37dec144-66f8-4a73-95c4-c9ef177c9364
+    contentColumnType: text
+globalSets:
+  3f9750a9-ae1b-42da-a85b-28b0a2480b68:
+    name: Location
+    handle: location
+    fieldLayouts:
+      1172f276-a7dc-41cf-9641-6bbdc7f61474:
+        tabs:
+          -
+            name: Location
+            sortOrder: 1
+            fields:
+              14caf314-7482-49ee-a507-ed522a769a10:
+                required: false
+                sortOrder: 2
+              19334b67-3de4-4763-9eff-3f56e0fd2a3f:
+                required: false
+                sortOrder: 4
+              728e68fc-7333-4d76-9aa9-f8b1ec45263b:
+                required: false
+                sortOrder: 1
+              c19db8b1-6e8c-4d55-b29d-fa429a504ca4:
+                required: false
+                sortOrder: 3
+plugins:
+  craftql:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.1.0
+    settings:
+      graphiqlFetchUrl: /
+      uri: graphql
+      verbs:
+        - POST
+      allowedHeaders:
+        - 'Authorization, Content-Type'
+      maxQueryDepth: false
+      maxQueryComplexity: false
+      throwSchemaBuildErrors: false
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  redirect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.5
+  seomatic:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.8
+sections:
+  08b69f49-f9aa-47e7-9e5b-ea22fbfe7820:
+    name: 'News Articles'
+    handle: news
+    type: channel
+    enableVersioning: true
+    propagationMethod: all
+    entryTypes:
+      926f2453-0f6c-4ce8-ad35-0f40037e78d7:
+        name: News
+        handle: news
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
+        fieldLayouts:
+          43cd94af-c259-4cd2-a09a-59d33ff28ebb:
+            tabs:
+              -
+                name: General
+                sortOrder: 1
+                fields:
+                  49df95d1-9335-456f-9975-732e1f464aec:
+                    required: false
+                    sortOrder: 2
+                  aeaba914-7f69-4d49-85aa-0a9be07aa22d:
+                    required: false
+                    sortOrder: 1
+              -
+                name: SEO
+                sortOrder: 2
+                fields:
+                  5e3f228d-3db1-4546-ab5e-389f4f36ec12:
+                    required: false
+                    sortOrder: 1
+    siteSettings:
+      95e89cc5-91be-44e4-833a-5d3017e3601f:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: 'news/{slug}'
+        template: ''
+  6daed0b6-7adb-4445-a58e-c09b7406418e:
+    name: Navigation
+    handle: navigation
+    type: structure
+    enableVersioning: true
+    propagationMethod: all
+    structure:
+      uid: 0c8044e2-aeb7-41a2-8b8c-fc4a389fc86f
+      maxLevels: 1
+    entryTypes:
+      ec81f43c-bc31-4410-bf00-9cc36e97cdc2:
+        name: Navigation
+        handle: navigation
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
+        fieldLayouts:
+          7d166b50-4f8b-47ac-8529-5271d44c1f47:
+            tabs:
+              -
+                name: General
+                sortOrder: 1
+                fields:
+                  8a58b2d5-25c9-4778-8539-75d647defee3:
+                    required: false
+                    sortOrder: 1
+    siteSettings:
+      95e89cc5-91be-44e4-833a-5d3017e3601f:
+        enabledByDefault: true
+        hasUrls: false
+        uriFormat: null
+        template: null
+  899ea362-fe9d-45d1-94c6-288e29f7a695:
+    name: 'News Index'
+    handle: newsIndex
+    type: single
+    enableVersioning: true
+    propagationMethod: all
+    entryTypes:
+      c2b1444f-2462-4c5c-ab43-54ffb9118db0:
+        name: 'News Index'
+        handle: newsIndex
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: '{section.name|raw}'
+        sortOrder: 1
+        fieldLayouts:
+          d0cfc9ad-0dac-4c74-a82d-274f6c331973:
+            tabs:
+              -
+                name: General
+                sortOrder: 1
+                fields:
+                  5e3f228d-3db1-4546-ab5e-389f4f36ec12:
+                    required: false
+                    sortOrder: 1
+    siteSettings:
+      95e89cc5-91be-44e4-833a-5d3017e3601f:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: news
+        template: ''
+siteGroups:
+  8c7f591a-8b93-4e6e-9028-647b8f681e09:
+    name: Boilerplate
+sites:
+  95e89cc5-91be-44e4-833a-5d3017e3601f:
+    siteGroup: 8c7f591a-8b93-4e6e-9028-647b8f681e09
+    name: Boilerplate
+    handle: default
+    language: en-US
+    hasUrls: true
+    baseUrl: $APP_URL
+    sortOrder: 1
+    primary: true
+system:
+  edition: pro
+  live: true
+  name: $SITE_NAME
+  schemaVersion: 3.2.15
+  timeZone: Europe/Amsterdam
