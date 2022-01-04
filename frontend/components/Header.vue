@@ -9,22 +9,24 @@
                 <li><nuxt-link to="/works">works</nuxt-link></li>
                 <li><nuxt-link to="/about">about</nuxt-link></li>
                 <li><nuxt-link to="/contact">contact</nuxt-link></li>
+                <li><nuxt-link to="/fr">fr</nuxt-link></li>
             </ul>
         </nav>
     </header>
 </template>
 
-<style>
+<style lang="scss">
 .header {
     padding: 1.5rem;
     text-transform: uppercase;
+    border-bottom: 1px solid $black;
 
     display: flex;
     justify-content: space-between;
-}
 
-.header__nav ul {
-    display: flex;
-    column-gap: 4rem;
+    &__nav ul {
+        display: flex;
+        column-gap: 4rem;
+    }
 }
 </style>

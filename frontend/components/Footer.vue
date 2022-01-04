@@ -1,11 +1,11 @@
 <template>
     <footer>
-        <p>
+        <!-- <p>
             Address: {{ location.address }}<br>
             Place: {{ location.place }}<br>
             Postal Code: {{ location.postalCode }}<br>
             Phone Number: {{ location.phoneNumber }}
-        </p>
+        </p> -->
     </footer>
 </template>
 

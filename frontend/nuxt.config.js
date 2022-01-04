@@ -5,7 +5,7 @@ require('dotenv').config();
 const consola = require('consola');
 
 module.exports = {
-    mode: 'universal',
+    // mode: 'universal',
 
     /**
      * Headers of the page
@@ -29,7 +29,7 @@ module.exports = {
     /**
      * Global CSS
      */
-    css: ['~/assets/css/tailwind.css'],
+    css: ['~/assets/css/tailwind.css', '~/assets/css/variables.scss'],
 
     /**
      * Plugins to load before mounting the App
@@ -51,7 +51,8 @@ module.exports = {
     ],
 
     buildModules: [
-        '@nuxtjs/tailwindcss'
+        '@nuxtjs/tailwindcss',
+        '@nuxtjs/style-resources',
     ],
 
     /**
@@ -122,7 +123,14 @@ module.exports = {
         ** You can extend webpack config here
         */
         extend(config, ctx) {
+            config.node = {
+                fs: 'empty'
+            };
+            config.resolve.alias['vue'] = 'vue/dist/vue.common';
+        },
 
+        babel: {
+            babelrc: true
         }
     },
 

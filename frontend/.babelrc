@@ -1,17 +1,16 @@
 {
-    "env": {
-        "test": {
-            "presets": [
-                [
-                    "@babel/preset-env",
-                    {
-                        "targets": {
-                            "node": "current"
-                        }
-                    }
-                ],
-                "@nuxt/babel-preset-app"
-            ]
-        }
-    }
+    "presets": [
+        [
+            "@nuxt/babel-preset-app",
+            {
+                "targets": {
+                    "node": "current"
+                }
+            }
+        ],
+    ],
+
+    "plugins": [
+        "@babel/plugin-proposal-optional-chaining"
+    ]
 }
