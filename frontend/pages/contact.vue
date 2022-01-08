@@ -1,7 +1,7 @@
 <template>
     <section class="container">
         <diag-line></diag-line>
-        contact
+        
     </section>
 </template>
 

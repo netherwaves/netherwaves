@@ -1,7 +1,7 @@
 <template>
     <header class="header">
         <div class="header__title">
-            <h1><nuxt-link to="/">netherwaves</nuxt-link></h1>
+            <nuxt-link to="/">netherwaves</nuxt-link>
         </div>
 
         <nav class="header__nav">

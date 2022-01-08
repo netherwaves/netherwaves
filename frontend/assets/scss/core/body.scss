@@ -1,5 +1,6 @@
 body {
     font-family: 'TT Hoves', Arial, Helvetica, sans-serif;
+    font-weight: normal;
     color: $black;
     letter-spacing: 0.03em;
     background-color: $fuschia;
@@ -9,4 +10,8 @@ a {
     color: $black;
     font-weight: normal;
     font-size: 21px;
+}
+
+h1 {
+    display: none;
 }

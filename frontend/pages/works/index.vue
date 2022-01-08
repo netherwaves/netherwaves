@@ -1,31 +1,31 @@
 <template>
-    <section class="container">
-        <p>works</p>
-        <nuxt-link to="works/single">go to single</nuxt-link>
+    <section class="wrapper">
+        <h1>works</h1>
 
-        <article v-for="(article, i) in articles" :key="i">
-            <h2>{{ article.title }}</h2>
-        </article>
+        <div class="row">
+            <work class="col-6 offset-2" v-for="(article, i) in articles" :key="i" :data="article"></work>
+        </div>
     </section>
 </template>
 
 <script>
     import DiagLine from '~/components/svg/DiagLine.vue';
+    import WorkListItem from '~/components/WorkListItem.vue';
 
     import meta from '~/plugins/page-meta.mixin.js';
     import worksQuery from '~/queries/works.gql';
-    import gql from 'graphql-tag';
 
     export default {
         mixins: [meta],
 
         components: {
             'diag-line': DiagLine,
+            'work': WorkListItem,
         },
 
         computed: {
             articles() {
-                return this.entries.edges.map(edge => edge.node);
+                return this.entries?.edges.map(edge => edge.node);
             }
         },
 
@@ -37,10 +37,12 @@
 
         apollo: {
             entries: {
+                prefetch: true,
                 query: worksQuery,
                 variables() {
                     return {
-                        limit: 5
+                        limit: 5,
+                        offset: 0
                     }
                 }
             }
@@ -49,9 +51,7 @@
 </script>
 
 <style lang="scss">
-.container {
-    position: relative;
-    display: flex;
-    align-items: center;
+.wrapper {
+    padding-top: 15vh;
 }
 </style>
