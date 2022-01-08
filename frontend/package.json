@@ -10,7 +10,7 @@
         "start": "nuxt start",
         "generate": "nuxt generate",
         "tailwind-schema": "tailwind build assets/css/tailwind.css -o assets/css/tailwind-schema.css",
-        "graphql-schema": "./../backend/craft craftql/tools/print-schema > schema.graphqls && ./../backend/craft craftql/tools/fetch-fragment-types > fragmentTypes.json",
+        "graphql-schema": "..\\backend\\craft craftql/tools/print-schema > schema.graphqls && ..\\backend\\craft craftql/tools/fetch-fragment-types > fragmentTypes.json",
         "schemas": "npm run tailwind-schema && npm run graphql-schema"
     },
     "dependencies": {
@@ -25,6 +25,7 @@
         "consola": "^2.11.0",
         "cross-env": "^6.0.3",
         "dotenv": "^7.0.0",
+        "graphql": "^16.2.0",
         "graphql-tag": "^2.10.1",
         "lodash": "^4.17.15",
         "node-fetch": "^2.6.0",

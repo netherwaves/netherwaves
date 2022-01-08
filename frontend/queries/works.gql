@@ -1,0 +1,15 @@
+query works($limit: Int!, $offset: Int) {
+    entries: entriesConnection(section: [works], limit: $limit, offset: $offset) {
+        edges {
+            node {
+                ... on Works {
+                    title
+                    uri
+                    body {
+                        content
+                    }
+                }
+            }
+        }
+    }
+}
