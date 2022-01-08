@@ -1,23 +1,22 @@
 <template>
     <section class="container">
         <diag-line></diag-line>
+        <p>works</p>
+        <nuxt-link to="works/single">go to single</nuxt-link>
     </section>
 </template>
 
 <script>
-    import P5Canvas from '~/components/P5Canvas.vue';
-
     import DiagLine from '~/components/svg/DiagLine.vue';
 
     export default {
         components: {
-            'p5-canvas': P5Canvas,
             'diag-line': DiagLine,
         },
 
         head() {
             return {
-                title: 'netherwaves | welcome'
+                title: 'works | netherwaves'
             }
         }
     }

@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div id="main">
         <v-header/>
-        <v-celest></v-celest>
         <nuxt/>
+        <v-footer></v-footer>
     </div>
 </template>
 
@@ -20,12 +20,12 @@
     }
 </script>
 
-<style>
-    body {
-        @apply font-sans;
-        letter-spacing: 0.03em;
-        font-size: 18px;
+<style lang="scss" scoped>
+#main {
+    min-height: 100vh;
 
-        background-color: #DFBCC4;
+    .container {
+        height: 100vh;
     }
+}
 </style>
