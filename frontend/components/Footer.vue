@@ -23,7 +23,10 @@ footer {
     padding: 1.5rem;
     border-top: 1px solid $black;
     font-size: 21px;
-    position: sticky;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
     bottom: 0;
 
     display: grid;

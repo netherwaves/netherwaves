@@ -9,7 +9,6 @@
                 <li><nuxt-link to="/works">works</nuxt-link></li>
                 <li><nuxt-link to="/about">about</nuxt-link></li>
                 <li><nuxt-link to="/contact">contact</nuxt-link></li>
-                <li><nuxt-link to="/fr">fr</nuxt-link></li>
             </ul>
         </nav>
     </header>
@@ -22,8 +21,12 @@
     background: $fuschia;
     text-transform: uppercase;
     border-bottom: 1px solid $black;
-    position: sticky;
+    position: fixed;
+    width: 100%;
+    height: auto;
     top: 0;
+    left: 0;
+    right: 0;
 
     display: flex;
     justify-content: space-between;
