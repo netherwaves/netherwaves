@@ -13,6 +13,32 @@ directive @date(
   locale: String
 ) on FIELD
 
+type About implements EntryInterface, ElementInterface {
+  id: Int!
+  author: User!
+  title: String!
+  slug: String!
+  dateCreated: Timestamp!
+  dateUpdated: Timestamp!
+  expiryDate: Timestamp
+  postDate: Timestamp
+  enabled: Boolean!
+  status: String!
+  uri: String
+  url: String
+  section: Section
+  type: EntryType
+  ancestors: [EntryInterface]
+  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
+  descendants: [EntryInterface]
+  hasDescendants: Boolean!
+  level: Int
+  parent: EntryInterface
+  siblings: [EntryInterface]
+  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
+  elementType: String
+}
+
 type CategoryConnection {
   totalCount: Int!
   pageInfo: PageInfo
@@ -55,6 +81,32 @@ interface CategoryInterface {
   prev: CategoryInterface
   prevSibling: CategoryInterface
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
+}
+
+type Contact implements EntryInterface, ElementInterface {
+  id: Int!
+  author: User!
+  title: String!
+  slug: String!
+  dateCreated: Timestamp!
+  dateUpdated: Timestamp!
+  expiryDate: Timestamp
+  postDate: Timestamp
+  enabled: Boolean!
+  status: String!
+  uri: String
+  url: String
+  section: Section
+  type: EntryType
+  ancestors: [EntryInterface]
+  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
+  descendants: [EntryInterface]
+  hasDescendants: Boolean!
+  level: Int
+  parent: EntryInterface
+  siblings: [EntryInterface]
+  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
+  elementType: String
 }
 
 enum DateFormatTypes {
@@ -171,9 +223,12 @@ type EntryType {
 }
 
 enum EntryTypesEnum {
+  About
+  Contact
   Navigation
   News
   NewsIndex
+  Works
 }
 
 type Field {
@@ -201,6 +256,12 @@ type Mutation {
   # A sample mutation. Doesn't actually save anything.
   helloWorld: String
 
+  # Create or update existing About.
+  upsertAbout(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery): About
+
+  # Create or update existing Contact.
+  upsertContact(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery): Contact
+
   # Create or update existing Navigation.
   upsertNavigation(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, href: String): Navigation
 
@@ -209,6 +270,9 @@ type Mutation {
 
   # Create or update existing NewsIndex.
   upsertNewsIndex(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, seo: String): NewsIndex
+
+  # Create or update existing Works.
+  upsertWorks(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, body: String, seo: String, topics: [TopicsCategoryInput]): Works
   upsertLocationGlobals(address: String, place: String, postalCode: String, phone: String): Location
   upsertUser(id: Int, firstName: String, lastName: String, username: String, email: String, permissions: [String]): User
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
@@ -417,9 +481,12 @@ type SectionSiteSettings {
 }
 
 enum SectionsEnum {
+  about
+  contact
   navigation
   news
   newsIndex
+  works
 }
 
 type Site {
@@ -486,6 +553,36 @@ type User {
   lastLoginDate: Timestamp!
   permissions: [String]
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
+}
+
+type Works implements EntryInterface, ElementInterface {
+  id: Int!
+  author: User!
+  title: String!
+  slug: String!
+  dateCreated: Timestamp!
+  dateUpdated: Timestamp!
+  expiryDate: Timestamp
+  postDate: Timestamp
+  enabled: Boolean!
+  status: String!
+  uri: String
+  url: String
+  section: Section
+  type: EntryType
+  ancestors: [EntryInterface]
+  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
+  descendants: [EntryInterface]
+  hasDescendants: Boolean!
+  level: Int
+  parent: EntryInterface
+  siblings: [EntryInterface]
+  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
+  elementType: String
+  body: RedactorFieldData
+  seo: String
+  topics: [TopicsCategory]
+  topicsConnection: CategoryConnection
 }
 
 type seomaticData {
