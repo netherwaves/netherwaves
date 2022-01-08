@@ -28,13 +28,12 @@ module.exports = {
      * Global CSS
      */
     css: [
-        '~assets/css/tailwind.css',
-        '~assets/css/variables.scss',
+        '~assets/scss/application.scss'
     ],
 
     styleResources: {
       scss: [
-      './assets/css/variables.scss',
+      './assets/scss/utils/variables.scss',
       ]
     },
 
@@ -59,7 +58,6 @@ module.exports = {
     ],
 
     buildModules: [
-        '@nuxtjs/tailwindcss',
         '@nuxtjs/style-resources',
     ],
 
