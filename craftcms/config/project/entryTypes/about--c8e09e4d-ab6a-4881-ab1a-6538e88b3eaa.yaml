@@ -1,0 +1,7 @@
+handle: about
+hasTitleField: false
+name: About
+section: b6368dc6-dc02-4dbf-a428-d319b8ee6c8d # About
+sortOrder: 1
+titleFormat: '{section.name|raw}'
+titleLabel: null

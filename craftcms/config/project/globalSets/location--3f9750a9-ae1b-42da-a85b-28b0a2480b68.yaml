@@ -1,0 +1,22 @@
+fieldLayouts:
+  1172f276-a7dc-41cf-9641-6bbdc7f61474:
+    tabs:
+      -
+        fields:
+          14caf314-7482-49ee-a507-ed522a769a10: # Place
+            required: false
+            sortOrder: 2
+          728e68fc-7333-4d76-9aa9-f8b1ec45263b: # Address
+            required: false
+            sortOrder: 1
+          19334b67-3de4-4763-9eff-3f56e0fd2a3f: # Phone
+            required: false
+            sortOrder: 4
+          c19db8b1-6e8c-4d55-b29d-fa429a504ca4: # Postal Code
+            required: false
+            sortOrder: 3
+        name: Location
+        sortOrder: 1
+handle: location
+name: Location
+sortOrder: 1

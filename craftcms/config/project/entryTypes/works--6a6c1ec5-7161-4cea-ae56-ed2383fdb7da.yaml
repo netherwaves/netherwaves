@@ -1,0 +1,45 @@
+fieldLayouts:
+  8c2f183f-58f4-49ab-bce7-4b4256d2cf2f:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: aeaba914-7f69-4d49-85aa-0a9be07aa22d # Body
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 5e3f228d-3db1-4546-ab5e-389f4f36ec12 # SEO
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 49df95d1-9335-456f-9975-732e1f464aec # Topics
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Common
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 37a1fa9d-06dd-4299-bc73-d0ecfde9861f # Year
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 8b80735b-94a1-4576-ae01-8334ebcfeba0 # Client
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 2183c3f5-1027-4c15-a9e6-0e9e1c486010 # Type
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: Work
+        sortOrder: 2
+handle: works
+hasTitleField: true
+name: Works
+section: 2f70c8d6-323e-4b38-8737-e17596de51c1 # Works
+sortOrder: 1
+titleFormat: ''

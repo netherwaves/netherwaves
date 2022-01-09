@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 37dec144-66f8-4a73-95c4-c9ef177c9364
+handle: place
+instructions: ''
+name: Place
+searchable: true
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

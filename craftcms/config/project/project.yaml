@@ -1,0 +1,71 @@
+dateModified: 1641738607
+email:
+  fromEmail: $SYSTEM_EMAIL_ADDRESS
+  fromName: $SITE_NAME
+  template: ''
+  transportSettings: null
+  transportType: craft\mail\transportadapters\Sendmail
+graphql:
+  publicToken:
+    enabled: false
+    expiryDate: null
+meta:
+  __names__:
+    2f70c8d6-323e-4b38-8737-e17596de51c1: Works # Works
+    3f9750a9-ae1b-42da-a85b-28b0a2480b68: Location # Location
+    5e3f228d-3db1-4546-ab5e-389f4f36ec12: SEO # SEO
+    6a6c1ec5-7161-4cea-ae56-ed2383fdb7da: Works # Works
+    6daed0b6-7adb-4445-a58e-c09b7406418e: Navigation # Navigation
+    8a58b2d5-25c9-4778-8539-75d647defee3: URL # URL
+    08b69f49-f9aa-47e7-9e5b-ea22fbfe7820: 'News Articles' # News Articles
+    8b80735b-94a1-4576-ae01-8334ebcfeba0: Client # Client
+    14caf314-7482-49ee-a507-ed522a769a10: Place # Place
+    37a1fa9d-06dd-4299-bc73-d0ecfde9861f: Year # Year
+    49df95d1-9335-456f-9975-732e1f464aec: Topics # Topics
+    728e68fc-7333-4d76-9aa9-f8b1ec45263b: Address # Address
+    899ea362-fe9d-45d1-94c6-288e29f7a695: 'News Index' # News Index
+    926f2453-0f6c-4ce8-ad35-0f40037e78d7: News # News
+    2183c3f5-1027-4c15-a9e6-0e9e1c486010: Type # Type
+    19334b67-3de4-4763-9eff-3f56e0fd2a3f: Phone # Phone
+    aeaba914-7f69-4d49-85aa-0a9be07aa22d: Body # Body
+    b6368dc6-dc02-4dbf-a428-d319b8ee6c8d: About # About
+    c2b1444f-2462-4c5c-ab43-54ffb9118db0: 'News Index' # News Index
+    c8e09e4d-ab6a-4881-ab1a-6538e88b3eaa: About # About
+    c19db8b1-6e8c-4d55-b29d-fa429a504ca4: 'Postal Code' # Postal Code
+    c6539bc1-9ff0-4675-a03c-5a6dcc515113: Contact # Contact
+    e12346ce-c5fe-4fea-a34b-6a64807f0ce0: Contact # Contact
+    ec81f43c-bc31-4410-bf00-9cc36e97cdc2: Navigation # Navigation
+plugins:
+  craftql:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.1.0
+    settings:
+      allowedHeaders:
+        - 'Authorization, Content-Type'
+      graphiqlFetchUrl: /
+      maxQueryComplexity: false
+      maxQueryDepth: false
+      throwSchemaBuildErrors: false
+      uri: graphql
+      verbs:
+        - POST
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  redirect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.5
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: GD68GO356CC5Y793M9UKA40X
+    schemaVersion: 3.0.11
+system:
+  edition: solo
+  live: true
+  name: $SITE_NAME
+  schemaVersion: 3.7.8
+  timeZone: Europe/Amsterdam
