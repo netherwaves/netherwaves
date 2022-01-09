@@ -1,4 +1,15 @@
 categoryGroups:
+  1b1907d7-73cd-4d23-93b4-2980c8b2ed3f:
+    name: 'Work Types'
+    handle: workTypes
+    structure:
+      uid: 80f9caa6-c465-4b65-a697-16b4cfcc0fc0
+      maxLevels: null
+    siteSettings:
+      95e89cc5-91be-44e4-833a-5d3017e3601f:
+        hasUrls: true
+        uriFormat: 'work-types/{slug}'
+        template: ''
   ed81e0e2-d805-41f7-9484-b6427fdb98dd:
     name: Topics
     handle: topics
@@ -10,7 +21,7 @@ categoryGroups:
         hasUrls: false
         uriFormat: null
         template: null
-dateModified: 1634442506
+dateModified: 1641678631
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SITE_NAME
@@ -22,6 +33,8 @@ fieldGroups:
     name: Globals
   637310c2-57c6-494d-aab6-8bee7b82c1df:
     name: Common
+  7e9c7343-1359-4b70-a3f4-dc3a1382eb60:
+    name: Work
   fd61749a-9c2a-452c-828c-27030549f21d:
     name: Misc
 fields:
@@ -59,6 +72,45 @@ fields:
       columnType: text
     fieldGroup: 37dec144-66f8-4a73-95c4-c9ef177c9364
     contentColumnType: text
+  2183c3f5-1027-4c15-a9e6-0e9e1c486010:
+    name: Type
+    handle: workType
+    instructions: ''
+    searchable: true
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Categories
+    settings:
+      allowLimit: false
+      allowMultipleSources: false
+      branchLimit: ''
+      sources: '*'
+      source: 'group:1b1907d7-73cd-4d23-93b4-2980c8b2ed3f'
+      targetSiteId: null
+      viewMode: null
+      limit: null
+      selectionLabel: ''
+      localizeRelations: false
+      validateRelatedElements: ''
+    contentColumnType: string
+    fieldGroup: 7e9c7343-1359-4b70-a3f4-dc3a1382eb60
+  37a1fa9d-06dd-4299-bc73-d0ecfde9861f:
+    name: Year
+    handle: workYear
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 7e9c7343-1359-4b70-a3f4-dc3a1382eb60
   49df95d1-9335-456f-9975-732e1f464aec:
     name: Topics
     handle: topics
@@ -127,6 +179,23 @@ fields:
       placeholder: ''
     fieldGroup: fd61749a-9c2a-452c-828c-27030549f21d
     contentColumnType: string(255)
+  8b80735b-94a1-4576-ae01-8334ebcfeba0:
+    name: Client
+    handle: workClient
+    instructions: ''
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 7e9c7343-1359-4b70-a3f4-dc3a1382eb60
   aeaba914-7f69-4d49-85aa-0a9be07aa22d:
     name: Body
     handle: body
@@ -255,6 +324,55 @@ sections:
         hasUrls: true
         uriFormat: 'news/{slug}'
         template: ''
+  2f70c8d6-323e-4b38-8737-e17596de51c1:
+    name: Works
+    handle: works
+    type: channel
+    enableVersioning: true
+    propagationMethod: all
+    siteSettings:
+      95e89cc5-91be-44e4-833a-5d3017e3601f:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: 'works/{slug}'
+        template: ''
+    entryTypes:
+      6a6c1ec5-7161-4cea-ae56-ed2383fdb7da:
+        name: Works
+        handle: works
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: ''
+        sortOrder: 1
+        fieldLayouts:
+          8c2f183f-58f4-49ab-bce7-4b4256d2cf2f:
+            tabs:
+              -
+                name: Common
+                sortOrder: 1
+                fields:
+                  49df95d1-9335-456f-9975-732e1f464aec:
+                    required: false
+                    sortOrder: 3
+                  5e3f228d-3db1-4546-ab5e-389f4f36ec12:
+                    required: false
+                    sortOrder: 2
+                  aeaba914-7f69-4d49-85aa-0a9be07aa22d:
+                    required: false
+                    sortOrder: 1
+              -
+                name: Work
+                sortOrder: 2
+                fields:
+                  2183c3f5-1027-4c15-a9e6-0e9e1c486010:
+                    required: false
+                    sortOrder: 3
+                  37a1fa9d-06dd-4299-bc73-d0ecfde9861f:
+                    required: false
+                    sortOrder: 1
+                  8b80735b-94a1-4576-ae01-8334ebcfeba0:
+                    required: false
+                    sortOrder: 2
   6daed0b6-7adb-4445-a58e-c09b7406418e:
     name: Navigation
     handle: navigation
@@ -318,21 +436,61 @@ sections:
         hasUrls: true
         uriFormat: news
         template: ''
+  b6368dc6-dc02-4dbf-a428-d319b8ee6c8d:
+    name: About
+    handle: about
+    type: single
+    enableVersioning: true
+    propagationMethod: all
+    siteSettings:
+      95e89cc5-91be-44e4-833a-5d3017e3601f:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: about
+        template: ''
+    entryTypes:
+      c8e09e4d-ab6a-4881-ab1a-6538e88b3eaa:
+        name: About
+        handle: about
+        hasTitleField: false
+        titleLabel: null
+        titleFormat: '{section.name|raw}'
+        sortOrder: 1
+  e12346ce-c5fe-4fea-a34b-6a64807f0ce0:
+    name: Contact
+    handle: contact
+    type: single
+    enableVersioning: true
+    propagationMethod: all
+    siteSettings:
+      95e89cc5-91be-44e4-833a-5d3017e3601f:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: contact
+        template: ''
+    entryTypes:
+      c6539bc1-9ff0-4675-a03c-5a6dcc515113:
+        name: Contact
+        handle: contact
+        hasTitleField: false
+        titleLabel: null
+        titleFormat: '{section.name|raw}'
+        sortOrder: 1
 siteGroups:
   8c7f591a-8b93-4e6e-9028-647b8f681e09:
-    name: Boilerplate
+    name: netherwaves
 sites:
   95e89cc5-91be-44e4-833a-5d3017e3601f:
     siteGroup: 8c7f591a-8b93-4e6e-9028-647b8f681e09
-    name: Boilerplate
+    name: netherwaves
     handle: default
-    language: en-CA
+    language: en-US
     hasUrls: true
     baseUrl: $APP_URL
     sortOrder: 1
     primary: true
 system:
-  edition: pro
+  edition: solo
   live: true
   name: $SITE_NAME
   schemaVersion: 3.2.15
