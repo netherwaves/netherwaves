@@ -1,0 +1,10 @@
+handle: topics
+name: Topics
+siteSettings:
+  95e89cc5-91be-44e4-833a-5d3017e3601f:
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: null
+  uid: f8e98e90-abe9-420c-91ef-e24d645ef464

@@ -1,0 +1,10 @@
+handle: workTypes
+name: 'Work Types'
+siteSettings:
+  95e89cc5-91be-44e4-833a-5d3017e3601f:
+    hasUrls: true
+    template: ''
+    uriFormat: 'work-types/{slug}'
+structure:
+  maxLevels: null
+  uid: 80f9caa6-c465-4b65-a697-16b4cfcc0fc0

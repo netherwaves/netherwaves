@@ -1,0 +1,33 @@
+fieldLayouts:
+  43cd94af-c259-4cd2-a09a-59d33ff28ebb:
+    tabs:
+      -
+        elements:
+          -
+            instructions: null
+            label: Title
+            type: craft\fieldlayoutelements\EntryTitleField
+          -
+            fieldUid: aeaba914-7f69-4d49-85aa-0a9be07aa22d # Body
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+          -
+            fieldUid: 49df95d1-9335-456f-9975-732e1f464aec # Topics
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: General
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 5e3f228d-3db1-4546-ab5e-389f4f36ec12 # SEO
+            required: false
+            type: craft\fieldlayoutelements\CustomField
+        name: SEO
+        sortOrder: 2
+handle: news
+hasTitleField: true
+name: News
+section: 08b69f49-f9aa-47e7-9e5b-ea22fbfe7820 # News Articles
+sortOrder: 1
+titleFormat: ''
