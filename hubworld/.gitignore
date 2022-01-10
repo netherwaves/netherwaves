@@ -92,3 +92,6 @@ graphql.config.json
 # HTTPS certificates
 server.key
 server.crt
+
+# GSAP
+gsap-bonus.tgz

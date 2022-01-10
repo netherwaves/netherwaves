@@ -1,22 +1,19 @@
 <template>
-    <section class="container">
-        <diag-line></diag-line>
+    <section class="view view--work-single" data-color="amber">
         work single
     </section>
 </template>
 
 <script>
-    import DiagLine from '~/components/svg/DiagLine.vue';
-
     export default {
-        components: {
-            'diag-line': DiagLine,
-        },
-
         head() {
             return {
                 title: 'work single | netherwaves'
             }
+        },
+
+        mounted() {
+            this.$nuxt.$emit("loader-enter", { el: this.$el });
         }
     }
 </script>

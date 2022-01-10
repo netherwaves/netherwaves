@@ -18,11 +18,12 @@
 .header {
     z-index: 1;
     padding: 1.5rem;
-    background: $fuschia;
     text-transform: uppercase;
     border-bottom: 1px solid $black;
     position: sticky;
     top: 0;
+
+    @include dynamicBg;
 
     display: flex;
     justify-content: space-between;

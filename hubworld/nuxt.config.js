@@ -48,7 +48,6 @@ module.exports = {
         '@nuxtjs/dotenv',
         '@nuxtjs/proxy',
         '@nuxtjs/redirect-module',
-        '@nuxtjs/style-resources',
     ],
 
     buildModules: [
@@ -58,6 +57,8 @@ module.exports = {
     styleResources: {
       scss: [
         './assets/scss/utils/variables.scss',
+        './assets/scss/utils/tools.scss',
+        './assets/scss/core/mixins.scss',
       ]
     },
 
@@ -129,8 +130,12 @@ module.exports = {
         ** You can extend webpack config here
         */
         extend(config, ctx) {
-
+            config.node = {
+                fs: 'empty'
+            };
+            config.resolve.alias['vue'] = 'vue/dist/vue.common';
         },
+        transpile: ['gsap'],
 
         babel: {
             presets() {
@@ -148,5 +153,11 @@ module.exports = {
         whitelist: [
             // 'css-selector-to-whitelist'
         ],
+    },
+
+    pageTransition: {
+      leave(el, done) {
+        this.$nuxt.$emit('loader-leave', { el, done });
+      },
     },
 };

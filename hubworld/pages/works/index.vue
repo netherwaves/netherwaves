@@ -1,29 +1,33 @@
 <template>
-    <section class="wrapper">
+    <section class="view view--works wrapper" data-color="amber">
         <h1>works</h1>
 
         <div class="row">
-            <work class="col-6 offset-2" v-for="(article, i) in articles" :key="i" :data="article"></work>
+            <work class="col-6 offset-2" v-for="(work, i) in works" :key="i" :data="work"></work>
         </div>
     </section>
 </template>
 
 <script>
-    import DiagLine from '~/components/svg/DiagLine.vue';
     import WorkListItem from '~/components/WorkListItem.vue';
 
-    import meta from '~/plugins/page-meta.mixin.js';
+    import meta from '~/plugins/page-meta.mixin.js';    // TODO: FIX THIS
     import worksQuery from '~/queries/works.gql';
 
     export default {
         components: {
-            'diag-line': DiagLine,
             'work': WorkListItem,
         },
 
+        data() {
+            return {
+                entries: {}
+            }
+        },
+
         computed: {
-            articles() {
-                return this.entries?.edges.map(edge => edge.node);
+            works() {
+                return this.entries?.edges?.map(edge => edge.node);
             }
         },
 
@@ -33,15 +37,24 @@
             }
         },
 
+        mounted() {
+            this.$nuxt.$emit("line-down");
+        },
+
         apollo: {
-            entries: {
-                prefetch: true,
+            works: {
                 query: worksQuery,
                 variables() {
                     return {
                         limit: 5,
                         offset: 0
                     }
+                },
+                update(data) {
+                    this.entries = data.entries;
+                    this.$nextTick(() => {
+                        this.$nuxt.$emit('loader-enter', { el: this.$el });
+                    });
                 }
             }
         }
@@ -50,6 +63,6 @@
 
 <style lang="scss">
 .wrapper {
-    padding-top: 15vh;
+    padding-top: 7vh;
 }
 </style>

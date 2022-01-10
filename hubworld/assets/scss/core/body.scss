@@ -1,9 +1,20 @@
+:root {
+    --palette-grey: #D4D4D4;
+    --palette-fuschia: #DFBCC4;
+    --palette-amber: #E8D9B4;
+    --palette-lime: #D2E3C5;
+    --palette-teal: #BDDACC;
+
+    --current-bg: var(--palette-grey);
+}
+
 body {
     font-family: 'TT Hoves', Arial, Helvetica, sans-serif;
     font-weight: normal;
     color: $black;
     letter-spacing: 0.03em;
-    background-color: $fuschia;
+
+    @include dynamicBg;
 }
 
 a {
@@ -14,13 +25,4 @@ a {
 
 h1 {
     display: none;
-}
-
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.5s;
-}
-.page-enter,
-.page-leave-to {
-  opacity: 0;
 }

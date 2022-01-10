@@ -2,7 +2,7 @@
     <footer>
         <span class="left">{{ formattedDate }}</span>
         <span class="center">{{ time.year }}</span>
-        <span class="right">{{ formattedTime }}</span>
+        <span class="right">{{ hour }}<span class="colon">:</span>{{ minute }} {{ dayHalf }}</span>
     </footer>
 </template>
 
@@ -26,8 +26,14 @@
                 return (this.toWords(this.time.day) + ' ' + this.toWords(this.time.month + 1)).toUpperCase();
             },
 
-            formattedTime() {
-                return ((this.time.hour - 1) % 12 + 1) + ' ' + this.time.minute + ' ' + (this.time.hour >= 12 ? 'pm' : 'am');
+            hour() {
+                return (this.time.hour - 1) % 12 + 1;
+            },
+            minute() {
+                return this.time.minute.toString().padStart(2, '0');
+            },
+            dayHalf() {
+                return this.time.hour >= 12 ? 'pm' : 'am';
             }
         },
 
@@ -61,12 +67,13 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 footer {
     padding: 1.5rem;
     border-top: 1px solid $black;
-    background: $fuschia;
     font-size: 21px;
+
+    @include dynamicBg;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -94,12 +101,27 @@ footer {
             animation-delay: 0s;
             animation-timing-function: ease-out;
         }
+
+        .colon {
+            animation-name: colon-blink;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-delay: 0s;
+            animation-timing-function: linear;
+        }
     }
 
     @keyframes live-blink {
         0% { opacity: 0.4; filter: blur(1px); }
         8% { opacity: 1; filter: blur(0); }
         100% { opacity: 0.4; filter: blur(1px); }
+    }
+
+    @keyframes colon-blink {
+        0% { opacity: 1; }
+        49% { opacity: 1; }
+        50% { opacity: 0; }
+        99% { opacity: 0; }
     }
 }
 </style>

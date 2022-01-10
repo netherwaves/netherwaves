@@ -1,23 +1,20 @@
 <template>
-    <section class="container">
-        <diag-line></diag-line>
-        
+    <section class="view view--contact" data-color="teal">
+        contact
     </section>
 </template>
 
 <script>
-    import DiagLine from '~/components/svg/DiagLine.vue';
-
     export default {
-        components: {
-            'diag-line': DiagLine,
-        },
-
         head() {
             return {
                 title: 'contact | netherwaves'
             }
-        }
+        },
+
+        mounted() {
+            this.$nuxt.$emit('loader-enter', { el: this.$el });
+        },
     }
 </script>
 
