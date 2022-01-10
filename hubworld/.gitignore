@@ -88,3 +88,7 @@ assets/css/tailwind-schema.css
 
 # GraphQL IDE config
 graphql.config.json
+
+# HTTPS certificates
+server.key
+server.crt

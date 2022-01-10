@@ -7,10 +7,12 @@
 
 <script>
     import DiagLine from '~/components/svg/DiagLine.vue';
+    import CelestialObject from '~/components/CelestialObject.vue';
 
     export default {
         components: {
             'diag-line': DiagLine,
+            'celest': CelestialObject
         },
 
         head() {
@@ -22,29 +24,25 @@
 </script>
 
 <style lang="scss">
-.container {
-    position: relative;
-    
-    .diag-line {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+.diag-line {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
-    .sphere {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 200px;
+.sphere {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
 
-        > div {
-            height: 0;
-            padding-top: 100%;
-            border: 1px solid $black;
-            border-radius: 50%;
-            background: $fuschia;
-        }
+    > div {
+        height: 0;
+        padding-top: 100%;
+        border: 1px solid $black;
+        border-radius: 50%;
+        background: $fuschia;
     }
 }
 </style>

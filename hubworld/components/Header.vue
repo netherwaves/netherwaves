@@ -21,12 +21,8 @@
     background: $fuschia;
     text-transform: uppercase;
     border-bottom: 1px solid $black;
-    position: fixed;
-    width: 100%;
-    height: auto;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
 
     display: flex;
     justify-content: space-between;

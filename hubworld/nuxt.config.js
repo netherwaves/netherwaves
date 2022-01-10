@@ -31,12 +31,6 @@ module.exports = {
         '~assets/scss/application.scss'
     ],
 
-    styleResources: {
-      scss: [
-      './assets/scss/utils/variables.scss',
-      ]
-    },
-
     /**
      * Plugins to load before mounting the App
      */
@@ -60,6 +54,12 @@ module.exports = {
     buildModules: [
         '@nuxtjs/style-resources',
     ],
+
+    styleResources: {
+      scss: [
+        './assets/scss/utils/variables.scss',
+      ]
+    },
 
     /**
      * Axios module configuration

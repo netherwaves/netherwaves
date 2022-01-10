@@ -16,8 +16,6 @@
     import worksQuery from '~/queries/works.gql';
 
     export default {
-        mixins: [meta],
-
         components: {
             'diag-line': DiagLine,
             'work': WorkListItem,

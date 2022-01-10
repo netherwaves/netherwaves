@@ -22,7 +22,4 @@
 </script>
 
 <style lang="scss">
-.container {
-    position: relative;
-}
 </style>

@@ -1,8 +1,8 @@
 <template>
     <section class="supernovae">
-        <!-- <li v-for="(sn, i) in Object.values(supernovae)" :key="i">
+        <li v-for="(sn, i) in Object.values(supernovae)" :key="i">
             {{ sn.name[0] }} - {{ sn.ra[0].value }} | {{ sn.dec[0].value }}
-        </li> -->
+        </li>
     </section>
 </template>
 
