@@ -33,9 +33,9 @@
     height: 100vh;
     display: grid;
     grid-template-rows: min-content 1fr min-content;
+    overflow: hidden;
 
     .container {
-        overflow: hidden;
         position: relative;
     }
 }

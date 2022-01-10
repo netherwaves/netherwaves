@@ -1,5 +1,5 @@
-@mixin dynamicBg {
-    background-color: var(--current-bg);
-    transition: background-color 0.7s ease-in-out;
+@mixin dynamicBg($prop: background-color) {
+    #{$prop}: var(--current-bg);
+    transition: #{$prop} 0.7s ease-in-out;
 }
 

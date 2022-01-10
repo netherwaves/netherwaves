@@ -7,8 +7,6 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex';
-
     export default {
         data() {
             return {
@@ -18,10 +16,6 @@
         },
 
         computed: {
-            ...mapState({
-                location: state => state.globals.location,
-            }),
-
             formattedDate() {
                 return (this.toWords(this.time.day) + ' ' + this.toWords(this.time.month + 1)).toUpperCase();
             },
@@ -61,6 +55,10 @@
             this.interval = setInterval(this.getTime, 1000);
         },
 
+        mounted() {
+            this.$el.classList.add("show-line");
+        },
+
         beforeDestroy() {
             clearInterval(this.interval);
         }
@@ -70,13 +68,34 @@
 <style lang="scss">
 footer {
     padding: 1.5rem;
-    border-top: 1px solid $black;
     font-size: 21px;
 
     @include dynamicBg;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    position: relative;
+    z-index: 10;
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        top: 0;
+        border-top: 1px solid $black;
+        pointer-events: none;
+
+        transform: scaleX(0);
+        transform-origin: 0% 0;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    &.show-line::after {
+        transform: scaleX(1);
+    }
 
     .center {
         justify-self: center;

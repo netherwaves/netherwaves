@@ -1,10 +1,20 @@
 <template>
-    <section class="view view--contact" data-color="teal">
-        contact
-    </section>
+    <div class="view view--contact" data-color="teal">
+        <div class="wrapper">
+            <div class="row row--h-center">
+                <div class="col-10 contact__container">
+                    <EmailContact class="contact-box"></EmailContact>
+                    <SocialContact class="contact-box"></SocialContact>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
+import EmailContact from '~/components/contact/EmailContact.vue';
+import SocialContact from '~/components/contact/SocialContact.vue';
+
     export default {
         head() {
             return {
@@ -12,11 +22,40 @@
             }
         },
 
+        components: {
+            'EmailContact': EmailContact,
+            'SocialContact': SocialContact
+        },
+
         mounted() {
             this.$nuxt.$emit('loader-enter', { el: this.$el });
+            this.$nuxt.$emit('line-side');
         },
     }
 </script>
 
 <style lang="scss">
+.contact__container {
+    display: grid;
+    align-items: flex-end;
+    grid-template-columns: auto max-content;
+}
+
+.contact-box {
+    p {
+        margin-bottom: 0.25rem;
+    }
+
+    li {
+        font-size: 30px;
+        margin: 0.5rem 0;
+        a {
+            text-decoration: underline;
+
+            &:hover, &:focus {
+                opacity: 0.5;
+            }
+        }
+    }
+}
 </style>

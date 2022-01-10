@@ -4,6 +4,17 @@
     </svg>
 </template>
 
+<script>
+// TODO: extend line past viewbox
+import gsap from 'gsap';
+
+export default {
+    beforeMount() {
+        gsap.set(this.$el.querySelector("line"), { drawSVG: 0, visibility: 'visible' });
+    }
+}
+</script>
+
 <style lang="scss" scoped>
 .diag-line {
     display: block;
@@ -12,6 +23,7 @@
 
     line {
         stroke: $black;
+        visibility: hidden;
     }
 }
 </style>

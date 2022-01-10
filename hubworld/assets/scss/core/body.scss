@@ -13,6 +13,7 @@ body {
     font-weight: normal;
     color: $black;
     letter-spacing: 0.03em;
+    font-size: 21px;
 
     @include dynamicBg;
 }
@@ -20,9 +21,13 @@ body {
 a {
     color: $black;
     font-weight: normal;
-    font-size: 21px;
 }
 
 h1 {
     display: none;
+}
+
+.view {
+    position: relative;
+    will-change: opacity;
 }

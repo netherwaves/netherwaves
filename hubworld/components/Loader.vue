@@ -6,9 +6,9 @@
 import gsap from 'gsap';
 
 export default {
-    mounted() {
-        this.$nuxt.$on('loader-enter', this.onLoaderEnter);
-        this.$nuxt.$on('loader-leave', this.onLoaderLeave);
+    beforeMount() {
+        this.$nuxt.$on('loader-enter', ::this.onLoaderEnter);
+        this.$nuxt.$on('loader-leave', ::this.onLoaderLeave);
     },
 
     methods: {
@@ -25,7 +25,7 @@ export default {
             const tl = gsap.timeline({ onComplete: done });
             tl.to(el, { opacity: 0, duration: .5 });
             tl.play();
-        }
+        },
     }
 }
 </script>

@@ -35,8 +35,10 @@ module.exports = {
      * Plugins to load before mounting the App
      */
     plugins: [
-        '~/plugins/vue-inject.js',
-        '~/plugins/axios.js'
+        { src: '~/plugins/axios.js' },
+        { src: '~/plugins/vue-inject.js' },
+        { src: '~/plugins/animations.js', mode: 'client' },
+        { src: '~/plugins/global.js' },
     ],
 
     /**
