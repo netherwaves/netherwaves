@@ -1,0 +1,16 @@
+contentColumnType: text
+fieldGroup: 7e9c7343-1359-4b70-a3f4-dc3a1382eb60
+handle: workClient
+instructions: ''
+name: Client
+searchable: true
+settings:
+  charLimit: ''
+  code: ''
+  columnType: text
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -1,0 +1,11 @@
+contentColumnType: string(255)
+fieldGroup: fd61749a-9c2a-452c-828c-27030549f21d
+handle: href
+instructions: ''
+name: URL
+searchable: true
+settings:
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url
