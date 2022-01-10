@@ -142,6 +142,11 @@ module.exports = {
                 return [
                     ["@nuxt/babel-preset-app", { corejs: { version: 3 } }]
                 ]
+            },
+            plugins() {
+                return [
+                    "@babel/plugin-proposal-function-bind"
+                ]
             }
         }
     },
