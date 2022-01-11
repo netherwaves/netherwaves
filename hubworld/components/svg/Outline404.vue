@@ -47,6 +47,23 @@
     </svg>
 </template>
 
+<script>
+import gsap from 'gsap';
+
+export default {
+    mounted() {
+        this.tween = gsap.from(this.$el.querySelectorAll("path"), { drawSVG: 0, stagger: 0.2, duration: 1.7, ease: 'quad.inOut', paused: true });
+    },
+
+    methods: {
+        display() {
+            if (this.tween)
+                this.tween.play();
+        }
+    }
+}
+</script>
+
 <style lang="scss" scoped>
 svg {
     path {

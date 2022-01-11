@@ -16,12 +16,6 @@ import ScrollMask from '~/components/svg/ScrollMask.vue';
 import Sphere from '~/components/svg/Sphere.vue';
 
 export default {
-    data() {
-        return {
-            hasInit: false
-        }
-    },
-
     components: {
         'diag-line': DiagLine,
         'scroll-mask': ScrollMask,
@@ -54,28 +48,28 @@ export default {
             this.moveContainer(tl, '50%', 0);
             this.moveLine(tl, '-50%');
             this.toggleScrollMask(false);
-            this.scaleSphere(tl, 0.5);
+            this.$refs.sphere.rescale(tl, 0.5);
         },
         onLineSide() {
             const tl = gsap.timeline();
             this.moveContainer(tl, 0, -90);
             this.moveLine(tl, '50%');
             this.toggleScrollMask(true);
-            this.scaleSphere(tl, 0.5);
+            this.$refs.sphere.rescale(tl, 0.5);
         },
         onLineHide() {
             const tl = gsap.timeline();
             this.moveContainer(tl, '50%', 0);
             this.moveLine(tl, '0');
             this.toggleScrollMask(false);
-            this.scaleSphere(tl, 0.5);
+            this.$refs.sphere.rescale(tl, 0.5);
         },
         onLineUp() {
             const tl = gsap.timeline();
             this.moveContainer(tl, 0, 0);
             this.moveLine(tl, 0);
             this.toggleScrollMask(false);
-            this.scaleSphere(tl, 1);
+            this.$refs.sphere.rescale(tl, 1);
         },
 
         // animations
@@ -83,7 +77,7 @@ export default {
             tl.to(this.$refs.container, { duration: 1.1, y: distance, rotation: angle, ease: 'power2.inOut', force3D: true }, 0);
         },
         moveLine(tl, distance) {
-            tl.to(this.$refs.line, { duration: 1.1, y: distance, ease: 'power2.inOut' }, 0);
+            tl.to(this.$refs.line, { duration: 1.1, y: distance, ease: 'power2.inOut', force3D: true }, 0);
         },
         toggleLineDraw(tl, hide = true) {
             gsap.killTweensOf(this.$refs.line.querySelector("line"));
@@ -91,9 +85,6 @@ export default {
         },
         toggleScrollMask(hide = true) {
             this.$scrollMask.classList[hide ? 'add' : 'remove']("hidden");
-        },
-        scaleSphere(tl, scale) {
-            tl.to(this.$refs.sphere.$el, { scale, duration: 1, ease: 'power2.inOut' }, 0);
         }
     }
 }

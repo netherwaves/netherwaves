@@ -47,6 +47,7 @@ export default {
         bottom: 0;
         right: calc(100% + 2.25rem);
         font-size: .75rem;
+        white-space: nowrap;
     }
 }
 </style>
