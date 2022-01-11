@@ -9,6 +9,7 @@
                 <li><nuxt-link to="/works" class="flap-text"><span>works</span></nuxt-link></li>
                 <li><nuxt-link to="/about" class="flap-text"><span>about</span></nuxt-link></li>
                 <li><nuxt-link to="/contact" class="flap-text"><span>contact</span></nuxt-link></li>
+                <li><nuxt-link to="/adsf" class="flap-text"><span>asdf</span></nuxt-link></li>
             </ul>
         </nav>
     </header>
@@ -16,12 +17,19 @@
 
 <script>
 import gsap from 'gsap';
+import {mapState} from 'vuex';
 
 import Logo from '~/components/Logo.vue';
 
 export default {
     components: {
         'Logo': Logo,
+    },
+
+    computed: {
+        ...mapState({
+            navigation: state => state.navigation
+        })
     },
 
     mounted() {

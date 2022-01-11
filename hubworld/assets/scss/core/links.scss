@@ -1,0 +1,8 @@
+a.text-link {
+    text-decoration: underline;
+    transition: opacity 0.3s ease;
+
+    &:hover, &:focus {
+        opacity: 0.5;
+    } 
+}

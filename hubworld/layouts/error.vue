@@ -9,7 +9,7 @@
                 <div class="frame">this page does not exist <span>yet</span>.</div>
             </div>
             <div class="row row--h-center">
-                <nuxt-link to="/">go back</nuxt-link>
+                <nuxt-link class="text-link" to="/">GO BACK</nuxt-link>
             </div>
         </div>
     </section>
@@ -21,7 +21,7 @@
     import gsap from 'gsap';
 
     export default {
-        layout: 'default',
+        layout: 'fade',
 
         components: {
             'outline-404': Outline404,
@@ -36,9 +36,11 @@
 
         mounted() {
             this.$nuxt.$emit("loader-enter", { el: this.$el });
+            this.$nuxt.$emit("line-error");
             this.$refs.number.display();
 
             gsap.set(this.$el.querySelector(".frame"), { autoAlpha: 1, delay: 1.3 });
+            gsap.set(this.$el.querySelector(".text-link"), { autoAlpha: 1, delay: 1.6 });
         },
 
     }
@@ -75,4 +77,8 @@
 
     @include dynamicBg;
 };
+
+.text-link {
+    opacity: 0;
+}
 </style>

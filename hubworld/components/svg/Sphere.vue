@@ -1,31 +1,33 @@
 <template>
-    <div class="sphere">
-        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="100" cy="100" r="99.5" vector-effect="non-scaling-stroke"/>
-            <circle cx="100" cy="100" r="99.5" stroke="#181818" vector-effect="non-scaling-stroke"/>
-        </svg>
-    </div>
+    <div class="sphere"><div></div></div>
 </template>
 
 <script>
+import gsap from 'gsap';
+
 export default {
     methods: {
         rescale(tl, scale) {
-            tl.set(this.$el.querySelector("svg"), { scale }, 0);
+            tl.set(this.$el, Object.assign({ width: `${ 200 * scale }px`, onComplete: () => {
+                if (scale === 0) gsap.set(this.$el, { visibility: 'hidden', delay: 1 });
+            } }, scale === 0 ? {} : { visibility: 'visible' }), 0);
         }
     }
 }
 </script>
 
-<style lang="scss">
-.sphere svg {
-    transform-origin: 50% 50%;
-    transition: transform 1s ease-in-out;
-    transform: scale(0);
+<style lang="scss" scoped>
+.sphere {
+    width: 0px;
+    transition: width 1s ease-in-out;
+    visibility: hidden;
 
-    circle:first-child {
-        @include dynamicBg(fill);
+    & > div {
+        height: 0;
+        padding-top: 100%;
+        border-radius: 50%;
+        border: 1px solid $black;
+        @include dynamicBg;
     }
-
 }
 </style>

@@ -27,6 +27,11 @@ export default {
 
     methods: {
         onMouseEnter(e) {
+            if (this.driftDelay) {
+                this.driftDelay.kill();
+                this.driftDelay = null;
+            }
+            
             if (this.drift) {
                 this.drift.kill();
                 this.drift = null;
@@ -36,7 +41,7 @@ export default {
         },
 
         onMouseLeave(e) {
-            gsap.delayedCall(10, ::this.driftoff);
+            this.driftDelay = gsap.delayedCall(10, ::this.driftoff);
         },
 
         driftoff() {

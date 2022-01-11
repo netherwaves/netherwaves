@@ -40,6 +40,7 @@ export default {
 
     &__subtitle {
         font-size: 0.75rem;
+        letter-spacing: .02em;
     }
 
     &__year {

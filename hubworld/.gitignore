@@ -94,4 +94,4 @@ server.key
 server.crt
 
 # GSAP
-gsap-bonus.tgz
+gsap-bonus.*

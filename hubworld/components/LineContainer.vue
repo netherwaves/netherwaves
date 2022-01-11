@@ -29,6 +29,7 @@ export default {
         this.$nuxt.$on('line-up', ::this.onLineUp);
         this.$nuxt.$on('line-side', ::this.onLineSide);
         this.$nuxt.$on('line-hide', ::this.onLineHide);
+        this.$nuxt.$on('line-error', ::this.onLineError);
         this.$nuxt.$on('loader-enter', ::this.onLoaderEnter);
     },
 
@@ -71,6 +72,13 @@ export default {
             this.toggleScrollMask(false);
             this.$refs.sphere.rescale(tl, 1);
         },
+        onLineError() {
+            const tl = gsap.timeline();
+            this.moveContainer(tl, 0, 0);
+            this.moveLine(tl, 0);
+            this.toggleScrollMask(true);
+            this.$refs.sphere.rescale(tl, 0);
+        },
 
         // animations
         moveContainer(tl, distance, angle) {
@@ -109,7 +117,6 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 200px;
 }
 
 .scroll-mask {

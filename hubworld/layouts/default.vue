@@ -45,18 +45,18 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #main {
     height: 100vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 
-    .container {
+    > .container {
         position: relative;
         flex-grow: 1;
 
-        .content {
+        > .content {
             @include absoluteBox;
         }
     }

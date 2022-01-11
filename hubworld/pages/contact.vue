@@ -62,13 +62,6 @@ import SocialContact from '~/components/contact/SocialContact.vue';
     li {
         font-size: 30px;
         margin: 0.5rem 0;
-        a {
-            text-decoration: underline;
-
-            &:hover, &:focus {
-                opacity: 0.5;
-            }
-        }
     }
 }
 </style>

@@ -23,11 +23,12 @@ export default {
             const {data} = await client.query({
                 query: gql`{
                     globals {
-                        location {
-                            address
-                            place
-                            postalCode
-                            phone
+                        socials {
+                            email
+                            twitter
+                            bandcamp
+                            soundcloud
+                            github
                         }
                     }
                     navigation: entries(section: [navigation]) {
