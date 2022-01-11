@@ -42,6 +42,17 @@ export default {
         driftoff() {
             this.$el.style.setProperty("overflow", "visible");
 
+            for (let i = 0; i < this.splitText.chars.length; i++) {
+                gsap.to(this.splitText.chars[i], {
+                    duration: 0.1,
+                    opacity: 0.55,
+                    ease: 'linear',
+                    delay: i * 0.025,
+                    yoyo: true,
+                    repeat: 1
+                });
+            }
+
             this.drift = gsap.to(this.splitText.chars, {
                 duration: 20,
                 ease: 'power1.inOut',

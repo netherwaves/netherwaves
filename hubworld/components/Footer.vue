@@ -1,12 +1,16 @@
 <template>
     <footer>
-        <span class="left">{{ formattedDate }}</span>
-        <span class="center"><span>{{ time.year }}</span><span>NO RIGHTS RESERVED</span></span>
-        <span class="right">{{ hour }}<span class="colon">:</span>{{ minute }} {{ dayHalf }}</span>
+        <div class="left flap-text">
+            <span>{{ formattedDate }}</span>
+        </div>
+        <span class="center flap-text"><span><span>{{ time.year }}</span><span>NO RIGHTS RESERVED</span></span></span>
+        <span class="right flap-text"><span>{{ hour }}<span class="colon">:</span>{{ minute }} {{ dayHalf }}</span></span>
     </footer>
 </template>
 
 <script>
+import gsap from 'gsap';
+
     export default {
         data() {
             return {
@@ -57,6 +61,7 @@
 
         mounted() {
             this.$el.classList.add("show-line");
+            gsap.to(this.$el.querySelectorAll('.flap-text > span'), { y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.2, delay: 0.5 });
         },
 
         beforeDestroy() {
@@ -105,19 +110,22 @@ footer {
         position: relative;
         cursor: default;
 
-        span {
-            display: inline-block;
-            transform: translate3d(0,0,0);
-            transition: transform 0.5s ease;
-            position: relative;
-            will-change: transform;
+        > span {
+            width: 100%;
+            > span {
+                display: inline-block;
+                transform: translate3d(0,0,0);
+                transition: transform 0.5s ease;
+                position: relative;
+                will-change: transform;
 
-            &:nth-child(2) {
-                position: absolute;
-                top: 0%;
-                left: 50%;
-                transform: translate3d(-50%, 100%, 0);
-                width: 100%;
+                &:nth-child(2) {
+                    position: absolute;
+                    top: 0%;
+                    left: 50%;
+                    transform: translate3d(-50%, 100%, 0);
+                    width: 100%;
+                }
             }
         }
 
@@ -134,22 +142,25 @@ footer {
 
     .right {
         justify-self: right;
-        display: inline-flex;
-        align-items: center;
 
-        &::before {
-            content: '';
-            display: inline-block;
-            margin-right: .75rem;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: $green;
-            animation-name: live-blink;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-delay: 0s;
-            animation-timing-function: ease-out;
+        > span {
+            display: flex;
+            align-items: center;
+
+            &::before {
+                content: '';
+                display: inline-block;
+                margin-right: .75rem;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: $green;
+                animation-name: live-blink;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+                animation-delay: 0s;
+                animation-timing-function: ease-out;
+            }
         }
 
         .colon {

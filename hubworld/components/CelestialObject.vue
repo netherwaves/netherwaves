@@ -40,7 +40,6 @@ export default {
             const decimals = Math.floor(Math.random() * 100).toString().padStart(2, '0');
 
             const output = `${hours}:${minutes}:${seconds}`;
-            console.log(output);
             return output;
         }
     }

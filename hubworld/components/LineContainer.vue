@@ -93,7 +93,7 @@ export default {
             this.$scrollMask.classList[hide ? 'add' : 'remove']("hidden");
         },
         scaleSphere(tl, scale) {
-            tl.to(this.$refs.sphere, { scale, duration: 1, ease: 'power2.inOut' }, 0);
+            tl.to(this.$refs.sphere.$el, { scale, duration: 1, ease: 'power2.inOut' }, 0);
         }
     }
 }
@@ -117,7 +117,7 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%);
     width: 200px;
 }
 
