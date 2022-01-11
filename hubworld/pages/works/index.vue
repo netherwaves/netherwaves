@@ -1,10 +1,9 @@
 <template>
     <section class="view view--works" data-color="amber">
-
         <LocomotiveScroll>
             <div class="wrapper">
                 <div class="row">
-                    <work class="col-6 offset-2" v-for="(work, i) in works" :key="i" :data="work"></work>
+                    <work @mouseenter.native="onMouseEnter" @mouseleave.native="onMouseLeave" v-for="(work, i) in works" :key="i" :data="work"></work>
                 </div>
             </div>
         </LocomotiveScroll>
@@ -44,6 +43,19 @@
             this.$nuxt.$emit("line-down");
         },
 
+        methods: {
+            onMouseEnter({ currentTarget }) {
+                if (!currentTarget.querySelector("a.work__container")) return;
+                this.$el.classList.add("work-hovered");
+                currentTarget.querySelector(".work__container").classList.add("hovered");
+            },
+
+            onMouseLeave({ currentTarget }) {
+                this.$el.classList.remove("work-hovered");
+                currentTarget.querySelector(".work__container").classList.remove("hovered");
+            },
+        },
+
         apollo: {
             works: {
                 query: worksQuery,
@@ -69,5 +81,13 @@
 <style lang="scss">
 .wrapper {
     padding-bottom: 60vh;
+}
+
+.view--works {
+    &.work-hovered {
+        .work__container:not(.hovered) {
+            opacity: 0.4;
+        }
+    }
 }
 </style>

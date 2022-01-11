@@ -4,6 +4,7 @@ query works($limit: Int!, $offset: Int) {
             node {
                 ... on Works {
                     title
+                    slug
                     uri
                     body {
                         content
@@ -11,6 +12,17 @@ query works($limit: Int!, $offset: Int) {
                     subtitle: workSubtitle
                     year: workYear
                     client: workClient
+                    collaborators: workCollaborators {
+                        name
+                        url
+                    }
+                    links: workLinks {
+                        label
+                        url
+                    }
+                    summary: workSummary {
+                        content
+                    }
                 }
             }
         }
