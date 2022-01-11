@@ -38,10 +38,6 @@
 </script>
 
 <style lang="scss" scoped>
-.container {
-    overflow-y: hidden;
-}
-
 .outline-404 {
     height: calc(100% + 3px);
     width: auto;

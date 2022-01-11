@@ -1,6 +1,5 @@
 <template>
-    <section class="view view--home" data-color="fuschia">
-    </section>
+    <section class="view view--home" data-color="fuschia"></section>
 </template>
 
 <script>

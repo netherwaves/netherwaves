@@ -34,12 +34,25 @@ import SocialContact from '~/components/contact/SocialContact.vue';
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.wrapper {
+    padding-bottom: 12vh;
+}
+
+.view--contact {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
 .contact__container {
     display: grid;
     align-items: flex-end;
     grid-template-columns: auto max-content;
 }
+</style>
+
+<style lang="scss">
 
 .contact-box {
     p {

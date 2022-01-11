@@ -1,23 +1,32 @@
 <template>
     <header class="header">
         <div class="header__title">
-            <nuxt-link to="/">netherwaves</nuxt-link>
+            <Logo></Logo>
         </div>
 
         <nav class="header__nav">
             <ul>
-                <li><nuxt-link to="/works">works</nuxt-link></li>
-                <li><nuxt-link to="/about">about</nuxt-link></li>
-                <li><nuxt-link to="/contact">contact</nuxt-link></li>
+                <li><nuxt-link to="/works" class="flap-text"><span>works</span></nuxt-link></li>
+                <li><nuxt-link to="/about" class="flap-text"><span>about</span></nuxt-link></li>
+                <li><nuxt-link to="/contact" class="flap-text"><span>contact</span></nuxt-link></li>
             </ul>
         </nav>
     </header>
 </template>
 
 <script>
+import gsap from 'gsap';
+
+import Logo from '~/components/Logo.vue';
+
 export default {
+    components: {
+        'Logo': Logo,
+    },
+
     mounted() {
         this.$el.classList.add("show-line");
+        gsap.to(this.$el.querySelectorAll('.flap-text > span'), { y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.2, delay: 0.5 });
     }
 }
 </script>

@@ -1,22 +1,66 @@
 <template>
     <section class="view view--about" data-color="lime">
-        about
+        <LocomotiveScroll ref="scroller">
+            <div class="wrapper">
+                <InfoFrameIntro></InfoFrameIntro>
+                <InfoFrame v-for="(frame, i) in infoFrames" :key="i" :data="frame"></InfoFrame>
+            </div>
+        </LocomotiveScroll>
     </section>
 </template>
 
 <script>
-    export default {
-        head() {
-            return {
-                title: 'about | netherwaves'
-            }
-        },
+import InfoFrame from '~/components/about/InfoFrame.vue';
+import InfoFrameIntro from '~/components/about/InfoFrameIntro.vue';
 
-        mounted() {
-            this.$nuxt.$emit('loader-enter', { el: this.$el });
-        },
+import aboutQuery from '~/queries/about.gql';
+
+export default {
+    head() {
+        return {
+            title: 'about | netherwaves'
+        }
+    },
+
+    data() {
+        return {
+            entry: {}
+        }
+    },
+
+    computed: {
+        infoFrames() {
+            return this.entry?.infoFrame;
+        }
+    },
+
+    components: {
+        'InfoFrame': InfoFrame,
+        'InfoFrameIntro': InfoFrameIntro,
+    },
+
+    mounted() {
+        this.$nuxt.$emit('line-hide');
+    },
+
+    apollo: {
+        about: {
+            query: aboutQuery,
+            update(data) {
+                this.entry = data?.entry;
+
+                this.$nextTick(() => {
+                    this.$nuxt.$emit('loader-enter', { el: this.$el });
+                    this.$nuxt.$emit('update-locomotive');
+                });
+            }
+        }
     }
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.wrapper {
+    padding-bottom: 40vh;
+}
 </style>

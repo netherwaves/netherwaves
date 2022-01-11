@@ -1,10 +1,12 @@
 import Vue from "vue";
 import LocomotiveScroll from "@/plugins/LocomotiveScroll/plugin/index.js";
-import {gsap} from "gsap";
+import { gsap } from "gsap";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { SplitText } from 'gsap/SplitText';
 
 Vue.use(LocomotiveScroll);
 gsap.registerPlugin(DrawSVGPlugin);
+gsap.registerPlugin(SplitText);
 
 export default ({ app }, inject) => {
     inject("initScrolltrigger", (refs) => {

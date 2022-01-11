@@ -1,7 +1,7 @@
 <template>
     <footer>
         <span class="left">{{ formattedDate }}</span>
-        <span class="center">{{ time.year }}</span>
+        <span class="center"><span>{{ time.year }}</span><span>NO RIGHTS RESERVED</span></span>
         <span class="right">{{ hour }}<span class="colon">:</span>{{ minute }} {{ dayHalf }}</span>
     </footer>
 </template>
@@ -98,7 +98,38 @@ footer {
     }
 
     .center {
+        width: 100%;
         justify-self: center;
+        text-align: center;
+        overflow-y: hidden;
+        position: relative;
+        cursor: default;
+
+        span {
+            display: inline-block;
+            transform: translate3d(0,0,0);
+            transition: transform 0.5s ease;
+            position: relative;
+            will-change: transform;
+
+            &:nth-child(2) {
+                position: absolute;
+                top: 0%;
+                left: 50%;
+                transform: translate3d(-50%, 100%, 0);
+                width: 100%;
+            }
+        }
+
+        &:hover span {
+            &:nth-child(1) {
+                transform: translate3d(0, -100%, 0);
+            }
+
+            &:nth-child(2) {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
     }
 
     .right {

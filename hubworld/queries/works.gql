@@ -8,6 +8,7 @@ query works($limit: Int!, $offset: Int) {
                     body {
                         content
                     }
+                    subtitle: workSubtitle
                     year: workYear
                     client: workClient
                 }

@@ -4,6 +4,7 @@ export default {
     state: () => ({
         navigation: {},
         globals: {},
+        loaderOut: 0.4
     }),
 
     mutations: {

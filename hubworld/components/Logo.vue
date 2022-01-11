@@ -1,79 +1,62 @@
 <template>
-    <div class="logo">
-        <div class="triangle triangle-two"></div>
-        <div class="triangle triangle-one"></div>
-        <div class="triangle triangle-three"></div>
-        <div class="triangle triangle-four"></div>
-    </div>
+    <nuxt-link
+        to="/"
+        class="flap-text"
+        @mouseenter.native="onMouseEnter"
+        @mouseleave.native="onMouseLeave"
+        ><span class="to-split">netherwaves</span></nuxt-link
+    >
 </template>
 
-<style scoped>
-    .logo {
-        display: inline-block;
-        animation: turn 2s linear forwards 1s;
-        transform: rotateX(180deg);
-        position: relative;
-        overflow: hidden;
-        height: 180px;
-        width: 245px;
-    }
+<script>
+import gsap from 'gsap';
+import SplitText from 'gsap/SplitText';
 
-    .triangle {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 0;
-    }
+export default {
+    mounted() {
+        this.splitText = new SplitText(this.$el.querySelector(".to-split"), { type: 'chars' });
+        this.onMouseLeave();
+    },
 
-    .triangle-one {
-        border-left: 105px solid transparent;
-        border-right: 105px solid transparent;
-        border-bottom: 180px solid #41b883;
-    }
+    beforeDestroy() {
+        if (this.splitText)
+            this.splitText.destroy();
 
-    .triangle-two {
-        top: 30px;
-        left: 35px;
-        animation: goright 0.5s linear forwards 3.5s;
-        border-left: 87.5px solid transparent;
-        border-right: 87.5px solid transparent;
-        border-bottom: 150px solid #3b8070;
-    }
+        this.splitText = null;
+    },
 
-    .triangle-three {
-        top: 60px;
-        left: 35px;
-        animation: goright 0.5s linear forwards 3.5s;
-        border-left: 70px solid transparent;
-        border-right: 70px solid transparent;
-        border-bottom: 120px solid #35495e;
-    }
+    methods: {
+        onMouseEnter(e) {
+            if (this.drift) {
+                this.drift.kill();
+                this.drift = null;
+            }
 
-    .triangle-four {
-        top: 120px;
-        left: 70px;
-        animation: godown 0.5s linear forwards 3s;
-        border-left: 35px solid transparent;
-        border-right: 35px solid transparent;
-        border-bottom: 60px solid #fff;
-    }
+            gsap.to(this.splitText.chars, { duration: 0.6, ease: 'power3.out', y: 0, x: 0, rotation: 0, force3D: true });
+        },
 
-    @keyframes turn {
-        100% {
-            transform: rotateX(0deg);
+        onMouseLeave(e) {
+            gsap.delayedCall(10, ::this.driftoff);
+        },
+
+        driftoff() {
+            this.$el.style.setProperty("overflow", "visible");
+
+            this.drift = gsap.to(this.splitText.chars, {
+                duration: 20,
+                ease: 'power1.inOut',
+                x: () => `${ Math.random() > 0.7 ? Math.floor(Math.random() * 70) - 35 : 0 }%`,
+                y: () => `${ Math.floor(Math.pow(Math.random(), 3) * 100) * (Math.random() > 0.5 ? -1 : 1) }%`,
+                rotation: () => Math.floor(Math.pow(Math.random(), 3) * 15 * (Math.random() > 0.5 ? -1 : 1)),
+                force3D: true,
+            });
         }
     }
+}
+</script>
 
-    @keyframes godown {
-        100% {
-            top: 180px;
-        }
-    }
-
-    @keyframes goright {
-        100% {
-            left: 70px;
-        }
-    }
+<style lang="scss">
+.to-split > div {
+    will-change: transform;
+}
 </style>

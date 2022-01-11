@@ -4,9 +4,7 @@
             <scroll-mask class="scroll-mask hidden"></scroll-mask>
             <diag-line></diag-line>
         </div>
-        <div class="sphere" ref="sphere">
-            <div></div>
-        </div>
+        <sphere ref="sphere" class="sphere"></sphere>
     </div>
 </template>
 
@@ -15,6 +13,7 @@ import gsap from 'gsap';
 
 import DiagLine from '~/components/svg/DiagLine.vue';
 import ScrollMask from '~/components/svg/ScrollMask.vue';
+import Sphere from '~/components/svg/Sphere.vue';
 
 export default {
     data() {
@@ -26,6 +25,7 @@ export default {
     components: {
         'diag-line': DiagLine,
         'scroll-mask': ScrollMask,
+        'sphere': Sphere,
     },
 
     beforeMount() {
@@ -34,44 +34,66 @@ export default {
         this.$nuxt.$on('line-down', ::this.onLineDown);
         this.$nuxt.$on('line-up', ::this.onLineUp);
         this.$nuxt.$on('line-side', ::this.onLineSide);
+        this.$nuxt.$on('line-hide', ::this.onLineHide);
         this.$nuxt.$on('loader-enter', ::this.onLoaderEnter);
     },
 
     mounted() {
+        this.tl = gsap.timeline({ paused: true });
+        this.tl.to(this.$refs.line.querySelector("line"), { drawSVG: '100%', duration: 1, ease: 'power2.inOut' });
+
+        this.tl.play();
     },
 
     methods: {
         onLoaderEnter() {
-            this.tl = gsap.timeline({ paused: true });
-            this.tl.to(this.$refs.line.querySelector("line"), { drawSVG: '100%', duration: 1, ease: 'power2.inOut' });
-            this.tl.from(this.$refs.sphere, { scale: 0, duration: 1, ease: 'power2.inOut' }, 0);
-
-
-            this.tl.play();
+            
         },
-
         onLineDown() {
             const tl = gsap.timeline();
-            tl.to(this.$refs.container, { duration: 1.1, rotation: 0, y: '50%', ease: 'power2.inOut', force3D: true }, 0);
-            tl.to(this.$refs.line, { duration: 1.1, y: '-50%', ease: 'power2.inOut' }, 0);
-
-            this.$scrollMask.classList.remove("hidden");
+            this.moveContainer(tl, '50%', 0);
+            this.moveLine(tl, '-50%');
+            this.toggleScrollMask(false);
+            this.scaleSphere(tl, 0.5);
         },
-
         onLineSide() {
             const tl = gsap.timeline();
-            tl.to(this.$refs.container, { duration: 1.1, rotation: -90, ease: 'power2.inOut', force3D: true }, 0);
-            tl.to(this.$refs.line, { duration: 1.1, y: '50%', ease: 'power2.inOut' }, 0);
-
-            this.$scrollMask.classList.add("hidden");
+            this.moveContainer(tl, 0, -90);
+            this.moveLine(tl, '50%');
+            this.toggleScrollMask(true);
+            this.scaleSphere(tl, 0.5);
         },
-
+        onLineHide() {
+            const tl = gsap.timeline();
+            this.moveContainer(tl, '50%', 0);
+            this.moveLine(tl, '0');
+            this.toggleScrollMask(false);
+            this.scaleSphere(tl, 0.5);
+        },
         onLineUp() {
             const tl = gsap.timeline();
-            tl.to(this.$refs.container, { duration: 1.1, rotation: 0, y: '0', ease: 'power2.inOut', force3D: true }, 0);
-            tl.to(this.$refs.line, { duration: 1.1, y: '0', ease: 'power2.inOut' }, 0);
+            this.moveContainer(tl, 0, 0);
+            this.moveLine(tl, 0);
+            this.toggleScrollMask(false);
+            this.scaleSphere(tl, 1);
+        },
 
-            this.$scrollMask.classList.add("hidden");
+        // animations
+        moveContainer(tl, distance, angle) {
+            tl.to(this.$refs.container, { duration: 1.1, y: distance, rotation: angle, ease: 'power2.inOut', force3D: true }, 0);
+        },
+        moveLine(tl, distance) {
+            tl.to(this.$refs.line, { duration: 1.1, y: distance, ease: 'power2.inOut' }, 0);
+        },
+        toggleLineDraw(tl, hide = true) {
+            gsap.killTweensOf(this.$refs.line.querySelector("line"));
+            tl.to(this.$refs.line.querySelector("line"), { drawSVG: hide ? 0 : '100%', duration: 1, ease: 'power2.inOut' }, 0);
+        },
+        toggleScrollMask(hide = true) {
+            this.$scrollMask.classList[hide ? 'add' : 'remove']("hidden");
+        },
+        scaleSphere(tl, scale) {
+            tl.to(this.$refs.sphere, { scale, duration: 1, ease: 'power2.inOut' }, 0);
         }
     }
 }
@@ -95,17 +117,8 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
     width: 200px;
-    display: none;
-
-    > div {
-        height: 0;
-        padding-top: 100%;
-        border: 1px solid $black;
-        border-radius: 50%;
-        @include dynamicBg;
-    }
 }
 
 .scroll-mask {

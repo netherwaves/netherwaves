@@ -1,19 +1,21 @@
-# Transform Timestamp types into string representations
+"""Transform Timestamp types into string representations"""
 directive @date(
-  # Date formatting
+  """Date formatting"""
   as: String = "r"
 
-  # The full name of the timezone, defaults to GMT. (E.g., America/New_York)
+  """
+  The full name of the timezone, defaults to GMT. (E.g., America/New_York)
+  """
   timezone: String = "GMT"
 
-  # A standard format to use, overrides the `as` argument
+  """A standard format to use, overrides the `as` argument"""
   format: DateFormatTypes
 
-  # The locale to use when formatting the date
+  """The locale to use when formatting the date"""
   locale: String
 ) on FIELD
 
-type About implements EntryInterface, ElementInterface {
+type About implements EntryInterface & ElementInterface {
   id: Int!
   author: User!
   title: String!
@@ -29,7 +31,7 @@ type About implements EntryInterface, ElementInterface {
   section: Section
   type: EntryType
   ancestors: [EntryInterface]
-  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
+  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [EntryInterface]
   descendants: [EntryInterface]
   hasDescendants: Boolean!
   level: Int
@@ -37,6 +39,13 @@ type About implements EntryInterface, ElementInterface {
   siblings: [EntryInterface]
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
   elementType: String
+  infoFrame(type: String, limit: Int): [InfoFrameUnion]
+}
+
+type AssetFocalPoint {
+  x: Float
+  y: Float
+  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
 }
 
 type CategoryConnection {
@@ -50,8 +59,8 @@ type CategoryConnection {
 type CategoryEdge {
   cursor: String
   node: CategoryInterface
-  children(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): CategoryConnection
-  relatedEntries(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): EntryConnection
+  children(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): CategoryConnection
+  relatedEntries(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): EntryConnection
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
 }
 
@@ -64,6 +73,7 @@ type CategoryGroup {
 
 enum CategoryGroupsEnum {
   topics
+  workTypes
 }
 
 interface CategoryInterface {
@@ -73,8 +83,8 @@ interface CategoryInterface {
   uri: String
   level: Int
   group: CategoryGroup
-  children(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [CategoryInterface]
-  childrenConnection(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): CategoryConnection
+  children(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [CategoryInterface]
+  childrenConnection(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): CategoryConnection
   parent: CategoryInterface
   next: CategoryInterface
   nextSibling: CategoryInterface
@@ -83,7 +93,7 @@ interface CategoryInterface {
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
 }
 
-type Contact implements EntryInterface, ElementInterface {
+type Contact implements EntryInterface & ElementInterface {
   id: Int!
   author: User!
   title: String!
@@ -99,7 +109,7 @@ type Contact implements EntryInterface, ElementInterface {
   section: Section
   type: EntryType
   ancestors: [EntryInterface]
-  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
+  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [EntryInterface]
   descendants: [EntryInterface]
   hasDescendants: Boolean!
   level: Int
@@ -109,38 +119,53 @@ type Contact implements EntryInterface, ElementInterface {
   elementType: String
 }
 
+enum CropFormatInputEnum {
+  jpg
+  gif
+  png
+  Auto
+}
+
+input CropInputObject {
+  width: Int
+  height: Int
+  quality: Int
+  position: PositionInputEnum
+  format: CropFormatInputEnum
+}
+
 enum DateFormatTypes {
-  # Atom feeds
+  """Atom feeds"""
   atom
 
-  # HTTP cookies
+  """HTTP cookies"""
   cookie
 
-  # ISO-8601 spec
+  """ISO-8601 spec"""
   iso8601
 
-  # RFC-822 spec
+  """RFC-822 spec"""
   rfc822
 
-  # RFC-850 spec
+  """RFC-850 spec"""
   rfc850
 
-  # RFC-1036 spec
+  """RFC-1036 spec"""
   rfc1036
 
-  # RFC-1123 spec
+  """RFC-1123 spec"""
   rfc1123
 
-  # RFC-2822 spec
+  """RFC-2822 spec"""
   rfc2822
 
-  # RFC-3339 spec
+  """RFC-3339 spec"""
   rfc3339
 
-  # RSS feed
+  """RSS feed"""
   rss
 
-  # W3C spec
+  """W3C spec"""
   w3c
 }
 
@@ -183,8 +208,8 @@ type EntryEdge {
   cursor: String
   node: EntryInterface
   drafts: EntryDraftConnection
-  relatedEntries(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): EntryConnection
-  relatedCategories(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): CategoryConnection
+  relatedEntries(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): EntryConnection
+  relatedCategories(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): CategoryConnection
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
 }
 
@@ -204,7 +229,7 @@ interface EntryInterface {
   section: Section
   type: EntryType
   ancestors: [EntryInterface]
-  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
+  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [EntryInterface]
   descendants: [EntryInterface]
   hasDescendants: Boolean!
   level: Int
@@ -244,6 +269,28 @@ type GlobalsSet {
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
 }
 
+input InfoFrameInput {
+  id: String
+  enabled: Boolean
+  textFrame: InfoFrameTextFrameInput
+}
+
+type InfoFrameTextFrame {
+  id: String
+  enabled: Boolean
+  frameTitle: String
+  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
+  frameContent: RedactorFieldData
+}
+
+input InfoFrameTextFrameInput {
+  frameTitle: String
+  frameContent: String
+}
+
+"""A union of possible blocks types"""
+union InfoFrameUnion = InfoFrameTextFrame
+
 type Location {
   address: String
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
@@ -253,26 +300,26 @@ type Location {
 }
 
 type Mutation {
-  # A sample mutation. Doesn't actually save anything.
+  """A sample mutation. Doesn't actually save anything."""
   helloWorld: String
 
-  # Create or update existing About.
-  upsertAbout(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery): About
+  """Create or update existing About."""
+  upsertAbout(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, infoFrame: [InfoFrameInput]): About
 
-  # Create or update existing Contact.
+  """Create or update existing Contact."""
   upsertContact(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery): Contact
 
-  # Create or update existing Navigation.
+  """Create or update existing Navigation."""
   upsertNavigation(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, href: String): Navigation
 
-  # Create or update existing News.
+  """Create or update existing News."""
   upsertNews(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, body: String, topics: [TopicsCategoryInput], seo: String): News
 
-  # Create or update existing NewsIndex.
+  """Create or update existing NewsIndex."""
   upsertNewsIndex(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, seo: String): NewsIndex
 
-  # Create or update existing Works.
-  upsertWorks(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, body: String, seo: String, topics: [TopicsCategoryInput]): Works
+  """Create or update existing Works."""
+  upsertWorks(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, body: String, seo: String, topics: [TopicsCategoryInput], workYear: String, workClient: String, workType: [WorkTypeCategoryInput]): Works
   upsertLocationGlobals(address: String, place: String, postalCode: String, phone: String): Location
   upsertUser(id: Int, firstName: String, lastName: String, username: String, email: String, permissions: [String]): User
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
@@ -319,15 +366,22 @@ input MutationQuery {
   uri: String
   address: String
   body: String
+  workClient: String
   phone: String
   place: String
   postalCode: String
   seo: String
   topics: String
+  workType: String
   href: String
+  workYear: String
 }
 
-type Navigation implements EntryInterface, ElementInterface {
+enum NamedTransformsEnum {
+  Empty
+}
+
+type Navigation implements EntryInterface & ElementInterface {
   id: Int!
   author: User!
   title: String!
@@ -343,7 +397,7 @@ type Navigation implements EntryInterface, ElementInterface {
   section: Section
   type: EntryType
   ancestors: [EntryInterface]
-  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
+  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [EntryInterface]
   descendants: [EntryInterface]
   hasDescendants: Boolean!
   level: Int
@@ -354,7 +408,7 @@ type Navigation implements EntryInterface, ElementInterface {
   href: String
 }
 
-type News implements EntryInterface, ElementInterface {
+type News implements EntryInterface & ElementInterface {
   id: Int!
   author: User!
   title: String!
@@ -370,7 +424,7 @@ type News implements EntryInterface, ElementInterface {
   section: Section
   type: EntryType
   ancestors: [EntryInterface]
-  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
+  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [EntryInterface]
   descendants: [EntryInterface]
   hasDescendants: Boolean!
   level: Int
@@ -384,7 +438,7 @@ type News implements EntryInterface, ElementInterface {
   seo: String
 }
 
-type NewsIndex implements EntryInterface, ElementInterface {
+type NewsIndex implements EntryInterface & ElementInterface {
   id: Int!
   author: User!
   title: String!
@@ -400,7 +454,7 @@ type NewsIndex implements EntryInterface, ElementInterface {
   section: Section
   type: EntryType
   ancestors: [EntryInterface]
-  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
+  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [EntryInterface]
   descendants: [EntryInterface]
   hasDescendants: Boolean!
   level: Int
@@ -421,20 +475,33 @@ type PageInfo {
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
 }
 
+enum PositionInputEnum {
+  topLeft
+  topCenter
+  topRight
+  centerLeft
+  centerCenter
+  centerRight
+  bottomLeft
+  bottomCenter
+  bottomRight
+}
+
 type Query {
   helloWorld: String
   ping: String
   sites(handle: String, id: Int, primary: Boolean): [Site]
-  entries(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
-  entriesConnection(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): EntryConnection
-  entry(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): EntryInterface
-  draft(draftId: Int!, after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): EntryInterface
+  entries(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [EntryInterface]
+  entriesConnection(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): EntryConnection
+  entry(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): EntryInterface
+  draft(draftId: Int!, after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): EntryInterface
+  assets(filename: String, fixedOrder: Boolean, folderId: Int, height: Int, id: Int, kind: String, limit: Int, locale: String, offset: Int, order: String, search: String, size: Int, title: String, sourceId: Int, width: Int, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [VolumeInterface]
   globals(site: String, siteId: Int): GlobalsSet
-  categories(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [CategoryInterface]
-  category(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): CategoryInterface
-  categoriesConnection(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): CategoryConnection
-  users(admin: Boolean, email: String, firstName: String, group: String, groupId: String, id: Int, lastLoginDate: Int, lastName: String, limit: Int, offset: Int, order: String, orderBy: String, search: String, username: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [User]
-  user(admin: Boolean, email: String, firstName: String, group: String, groupId: String, id: Int, lastLoginDate: Int, lastName: String, limit: Int, offset: Int, order: String, orderBy: String, search: String, username: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): User
+  categories(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [CategoryInterface]
+  category(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): CategoryInterface
+  categoriesConnection(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): CategoryConnection
+  users(admin: Boolean, email: String, firstName: String, group: String, groupId: String, id: Int, lastLoginDate: Int, lastName: String, limit: Int, offset: Int, order: String, orderBy: String, search: String, username: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [User]
+  user(admin: Boolean, email: String, firstName: String, group: String, groupId: String, id: Int, lastLoginDate: Int, lastName: String, limit: Int, offset: Int, order: String, orderBy: String, search: String, username: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): User
   sections: [Section]
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
 }
@@ -503,14 +570,16 @@ type Site {
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
 }
 
-# The `Timestamp` scalar type represents a unix timestamp. The Timestamp type can
-# be converted to a human friendly format with the `@date` directive.
-# 
-#     {
-#       entries {
-#         dateCreated @date(as:"F j, Y")
-#       }
-#     }
+"""
+The `Timestamp` scalar type represents a unix timestamp. The Timestamp type can
+be converted to a human friendly format with the `@date` directive.
+
+    {
+      entries {
+        dateCreated @date(as:"F j, Y")
+      }
+    }
+"""
 scalar Timestamp
 
 type TopicsCategory implements CategoryInterface {
@@ -520,8 +589,8 @@ type TopicsCategory implements CategoryInterface {
   uri: String
   level: Int
   group: CategoryGroup
-  children(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [CategoryInterface]
-  childrenConnection(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): CategoryConnection
+  children(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [CategoryInterface]
+  childrenConnection(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): CategoryConnection
   parent: CategoryInterface
   next: CategoryInterface
   nextSibling: CategoryInterface
@@ -534,6 +603,27 @@ input TopicsCategoryInput {
   id: Int
   title: String
   slug: String
+}
+
+type UploadsVolume implements VolumeInterface {
+  id: Int
+  url(transform: NamedTransformsEnum, crop: CropInputObject, fit: CropInputObject, stretch: CropInputObject): String
+  width(transform: NamedTransformsEnum, crop: CropInputObject, fit: CropInputObject, stretch: CropInputObject): String
+  height(transform: NamedTransformsEnum, crop: CropInputObject, fit: CropInputObject, stretch: CropInputObject): String
+  size: Int
+  folder: VolumeFolder
+  volumeId: String
+  mimeType: String
+  kind: String
+  title: String
+  extension: String
+  filename: String
+  dateCreatedTimestamp: Timestamp
+  dateCreated: Timestamp
+  dateUpdatedTimestamp: Timestamp
+  dateUpdated: Timestamp
+  focalPoint: AssetFocalPoint
+  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
 }
 
 type User {
@@ -555,7 +645,59 @@ type User {
   seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
 }
 
-type Works implements EntryInterface, ElementInterface {
+type VolumeFolder {
+  id: Int
+  volumeId: Int
+  name: String
+  path: String
+  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
+}
+
+interface VolumeInterface {
+  id: Int
+  url(transform: NamedTransformsEnum, crop: CropInputObject, fit: CropInputObject, stretch: CropInputObject): String
+  width(transform: NamedTransformsEnum, crop: CropInputObject, fit: CropInputObject, stretch: CropInputObject): String
+  height(transform: NamedTransformsEnum, crop: CropInputObject, fit: CropInputObject, stretch: CropInputObject): String
+  size: Int
+  folder: VolumeFolder
+  volumeId: String
+  mimeType: String
+  kind: String
+  title: String
+  extension: String
+  filename: String
+  dateCreatedTimestamp: Timestamp
+  dateCreated: Timestamp
+  dateUpdatedTimestamp: Timestamp
+  dateUpdated: Timestamp
+  focalPoint: AssetFocalPoint
+  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
+}
+
+input WorkTypeCategoryInput {
+  id: Int
+  title: String
+  slug: String
+}
+
+type WorkTypesCategory implements CategoryInterface {
+  id: Int!
+  title: String!
+  slug: String
+  uri: String
+  level: Int
+  group: CategoryGroup
+  children(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [CategoryInterface]
+  childrenConnection(ancestorOf: Int, ancestorDist: Int, level: Int, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, group: [CategoryGroupsEnum], groupId: Int, id: [Int], indexBy: String, limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, prevSiblingOf: Int, search: String, siblingOf: Int, slug: String, title: String, uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): CategoryConnection
+  parent: CategoryInterface
+  next: CategoryInterface
+  nextSibling: CategoryInterface
+  prev: CategoryInterface
+  prevSibling: CategoryInterface
+  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
+}
+
+type Works implements EntryInterface & ElementInterface {
   id: Int!
   author: User!
   title: String!
@@ -571,7 +713,7 @@ type Works implements EntryInterface, ElementInterface {
   section: Section
   type: EntryType
   ancestors: [EntryInterface]
-  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, phone: String, place: String, postalCode: String, seo: String, topics: String, href: String): [EntryInterface]
+  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, body: String, workClient: String, phone: String, place: String, postalCode: String, seo: String, topics: String, workType: String, href: String, workYear: String): [EntryInterface]
   descendants: [EntryInterface]
   hasDescendants: Boolean!
   level: Int
@@ -583,6 +725,10 @@ type Works implements EntryInterface, ElementInterface {
   seo: String
   topics: [TopicsCategory]
   topicsConnection: CategoryConnection
+  workYear: String
+  workClient: String
+  workType: [WorkTypesCategory]
+  workTypeConnection: CategoryConnection
 }
 
 type seomaticData {

@@ -1,10 +1,13 @@
 <template>
-    <section class="view view--works wrapper" data-color="amber">
-        <h1>works</h1>
+    <section class="view view--works" data-color="amber">
 
-        <div class="row">
-            <work class="col-6 offset-2" v-for="(work, i) in works" :key="i" :data="work"></work>
-        </div>
+        <LocomotiveScroll>
+            <div class="wrapper">
+                <div class="row">
+                    <work class="col-6 offset-2" v-for="(work, i) in works" :key="i" :data="work"></work>
+                </div>
+            </div>
+        </LocomotiveScroll>
     </section>
 </template>
 
@@ -46,14 +49,16 @@
                 query: worksQuery,
                 variables() {
                     return {
-                        limit: 5,
+                        limit: 30,
                         offset: 0
                     }
                 },
                 update(data) {
                     this.entries = data.entries;
+
                     this.$nextTick(() => {
                         this.$nuxt.$emit('loader-enter', { el: this.$el });
+                        this.$nuxt.$emit('update-locomotive');
                     });
                 }
             }
@@ -63,6 +68,6 @@
 
 <style lang="scss">
 .wrapper {
-    padding-top: 7vh;
+    padding-bottom: 60vh;
 }
 </style>

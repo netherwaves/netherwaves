@@ -40,7 +40,7 @@ export default {
     locomotive: undefined,
     defaultOptions: {
       smooth: true,
-      multiplier: matchFirefox(1.5)
+      multiplier: matchFirefox(0.5)
     },
   }),
   computed: {
