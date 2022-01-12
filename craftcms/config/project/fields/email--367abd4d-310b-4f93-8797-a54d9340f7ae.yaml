@@ -1,0 +1,12 @@
+columnSuffix: tmxwmkly
+contentColumnType: string
+fieldGroup: adce3d5e-a59b-43a4-a811-3e23a696c101 # Socials
+handle: email
+instructions: ''
+name: Email
+searchable: false
+settings:
+  placeholder: ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Email

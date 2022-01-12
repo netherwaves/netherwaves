@@ -1,0 +1,16 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: 9e599f7e-173c-416c-9fa7-125a5dfa6f21 # About
+handle: infoFrame
+instructions: ''
+name: 'Info Frame'
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_infoframe}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationKeyFormat: null
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

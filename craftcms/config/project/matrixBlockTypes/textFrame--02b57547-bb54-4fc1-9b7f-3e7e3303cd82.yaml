@@ -1,0 +1,79 @@
+field: d761b95a-3218-4e96-9c97-9644fcbc56a6 # Info Frame
+fieldLayouts:
+  512f6b6b-a951-4b29-b6bd-7968608a0546:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 2a7cfcf1-149b-4473-8f34-819147dc86fd # Title
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 23bd2e33-b6a7-4f19-b6cc-ed23eb1f7828 # Content
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  2a7cfcf1-149b-4473-8f34-819147dc86fd: # Title
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: frameTitle
+    instructions: ''
+    name: Title
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  23bd2e33-b6a7-4f19-b6cc-ed23eb1f7828: # Content
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: frameContent
+    instructions: ''
+    name: Content
+    searchable: false
+    settings:
+      availableTransforms: '*'
+      availableVolumes: '*'
+      cleanupHtml: true
+      columnType: text
+      configSelectionMode: choose
+      defaultTransform: ''
+      manualConfig: ''
+      purifierConfig: ''
+      purifyHtml: '1'
+      redactorConfig: ''
+      removeEmptyTags: '1'
+      removeInlineStyles: '1'
+      removeNbsp: '1'
+      showHtmlButtonForNonAdmins: ''
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      uiMode: enlarged
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\redactor\Field
+handle: textFrame
+name: 'Text Frame'
+sortOrder: 1
