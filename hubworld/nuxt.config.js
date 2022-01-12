@@ -4,6 +4,9 @@ const pkg = require('./package');
 require('dotenv').config();
 const consola = require('consola');
 
+import fs from 'fs';
+import path from 'path';
+
 module.exports = {
     /**
      * Headers of the page
@@ -160,6 +163,15 @@ module.exports = {
         whitelist: [
             // 'css-selector-to-whitelist'
         ],
+    },
+
+    server: {
+        port: process.env.PORT,
+        host: process.env.HOST,
+        https: {
+            key: fs.readFileSync(path.resolve(process.env.CERT_LOCATION, 'privkey.pem')),
+            cert: fs.readFileSync(path.resolve(process.env.CERT_LOCATION, 'fullchain.pem'))
+        }
     },
 
     pageTransition: {
