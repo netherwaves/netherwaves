@@ -14,7 +14,7 @@ export default {
     methods: {
         onLoaderEnter({ el, done }) {
             const tl = gsap.timeline({ onComplete: done });
-            tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: .5 });
+            tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: .5, delay: 0.2 });
             tl.play();
 
             // change background color
