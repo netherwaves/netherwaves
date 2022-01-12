@@ -1,0 +1,11 @@
+<template>
+    <svg width="1441" height="1038" viewBox="0 0 1441 1038" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1440.1 -1.47544e-05L0.100052 340L0.100051 1037.99L1440.1 1037.99L1440.1 -1.47544e-05Z" />
+    </svg>
+</template>
+
+<style lang="scss">
+path {
+    @include dynamicBg(fill);
+}
+</style>

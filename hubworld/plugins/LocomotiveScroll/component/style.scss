@@ -1,0 +1,12 @@
+.has-scroll-smooth body{
+  overflow: hidden;
+}
+
+body.mobile.locked {
+  overflow: hidden;
+}
+
+.has-scroll-smooth .js-locomotive {
+  min-height: 100%;
+  width: 100%;
+}

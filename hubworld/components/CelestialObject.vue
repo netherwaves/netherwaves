@@ -1,8 +1,8 @@
 <template>
     <section class="supernovae">
-        <!-- <li v-for="(sn, i) in Object.values(supernovae)" :key="i">
+        <li v-for="(sn, i) in Object.values(supernovae)" :key="i">
             {{ sn.name[0] }} - {{ sn.ra[0].value }} | {{ sn.dec[0].value }}
-        </li> -->
+        </li>
     </section>
 </template>
 
@@ -40,7 +40,6 @@ export default {
             const decimals = Math.floor(Math.random() * 100).toString().padStart(2, '0');
 
             const output = `${hours}:${minutes}:${seconds}`;
-            console.log(output);
             return output;
         }
     }

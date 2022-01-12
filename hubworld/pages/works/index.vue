@@ -1,57 +1,118 @@
 <template>
-    <section class="wrapper">
-        <h1>works</h1>
-
-        <div class="row">
-            <work class="col-6 offset-2" v-for="(article, i) in articles" :key="i" :data="article"></work>
-        </div>
+    <section class="view view--works" data-color="amber">
+        <LocomotiveScroll>
+            <div class="wrapper">
+                <div class="row">
+                    <work
+                        @mouseenter="onMouseEnter"
+                        @mouseleave="onMouseLeave"
+                        v-for="(work, i) in works"
+                        :key="i"
+                        :data="work"
+                    ></work>
+                </div>
+            </div>
+        </LocomotiveScroll>
     </section>
 </template>
 
 <script>
-    import DiagLine from '~/components/svg/DiagLine.vue';
-    import WorkListItem from '~/components/WorkListItem.vue';
+import gsap from "gsap";
 
-    import meta from '~/plugins/page-meta.mixin.js';
-    import worksQuery from '~/queries/works.gql';
+import WorkListItem from "~/components/WorkListItem.vue";
 
-    export default {
-        mixins: [meta],
+import meta from "~/plugins/page-meta.mixin.js"; // TODO: FIX THIS
+import worksQuery from "~/queries/works.gql";
 
-        components: {
-            'diag-line': DiagLine,
-            'work': WorkListItem,
+export default {
+    components: {
+        work: WorkListItem,
+    },
+
+    data() {
+        return {
+            entries: {},
+        };
+    },
+
+    computed: {
+        works() {
+            return this.entries?.edges?.map((edge) => edge.node);
+        },
+    },
+
+    head() {
+        return {
+            title: "works | netherwaves",
+        };
+    },
+
+    mounted() {
+        this.$nuxt.$emit("line-down");
+    },
+
+    methods: {
+        onMouseEnter({ currentTarget }) {
+            if (!currentTarget.querySelector(".work__container > a")) return;
+
+            this.$el.classList.add("work-hovered");
+            currentTarget
+                .querySelector(".work__container")
+                .classList.add("hovered");
+
+            // fan down
+            if (this.delayedCall) this.delayedCall.kill();
+            this.$nuxt.$emit("fan-down");
         },
 
-        computed: {
-            articles() {
-                return this.entries?.edges.map(edge => edge.node);
-            }
-        },
+        onMouseLeave({ currentTarget }) {
+            if (!currentTarget.querySelector(".work__container > a")) return;
 
-        head() {
-            return {
-                title: 'works | netherwaves'
-            }
-        },
+            this.$el.classList.remove("work-hovered");
+            currentTarget
+                .querySelector(".work__container")
+                .classList.remove("hovered");
 
-        apollo: {
-            entries: {
-                prefetch: true,
-                query: worksQuery,
-                variables() {
-                    return {
-                        limit: 5,
-                        offset: 0
-                    }
-                }
-            }
-        }
-    }
+            // fan up
+            this.delayedCall = gsap.delayedCall(0.3, () => this.$nuxt.$emit("fan-up"));
+        },
+    },
+
+    apollo: {
+        works: {
+            query: worksQuery,
+            variables() {
+                return {
+                    limit: 30,
+                    offset: 0,
+                };
+            },
+            update(data) {
+                this.entries = data.entries;
+
+                this.$nextTick(() => {
+                    this.$nuxt.$emit("loader-enter", { el: this.$el });
+                    this.$nuxt.$emit("update-locomotive");
+                });
+            },
+        },
+    },
+};
 </script>
 
 <style lang="scss">
-.wrapper {
-    padding-top: 15vh;
+
+.view--works {
+    .wrapper {
+        padding-bottom: 60vh;
+        height: 100%;
+        margin: 0;
+    }
+
+    &.work-hovered {
+        .work__container:not(.hovered) {
+            opacity: 0.4;
+        }
+    }
 }
 </style>

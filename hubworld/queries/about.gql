@@ -1,0 +1,17 @@
+query about {
+    entry(section: [about]) {
+        ... on About {
+            title
+
+            infoFrame {
+                ... on InfoFrameTextFrame {
+                    __typename
+                    title: frameTitle
+                    frameContent {
+                        content
+                    }
+                }
+            }
+        }
+    }
+}

@@ -31,18 +31,14 @@ module.exports = {
         '~assets/scss/application.scss'
     ],
 
-    styleResources: {
-      scss: [
-      './assets/scss/utils/variables.scss',
-      ]
-    },
-
     /**
      * Plugins to load before mounting the App
      */
     plugins: [
-        '~/plugins/vue-inject.js',
-        '~/plugins/axios.js'
+        { src: '~/plugins/axios.js' },
+        { src: '~/plugins/vue-inject.js' },
+        { src: '~/plugins/animations.js', mode: 'client' },
+        { src: '~/plugins/global.js' },
     ],
 
     /**
@@ -54,12 +50,19 @@ module.exports = {
         '@nuxtjs/dotenv',
         '@nuxtjs/proxy',
         '@nuxtjs/redirect-module',
-        '@nuxtjs/style-resources',
     ],
 
     buildModules: [
         '@nuxtjs/style-resources',
     ],
+
+    styleResources: {
+      scss: [
+        './assets/scss/utils/variables.scss',
+        './assets/scss/utils/tools.scss',
+        './assets/scss/core/mixins.scss',
+      ]
+    },
 
     /**
      * Axios module configuration
@@ -129,13 +132,22 @@ module.exports = {
         ** You can extend webpack config here
         */
         extend(config, ctx) {
-
+            config.node = {
+                fs: 'empty'
+            };
+            config.resolve.alias['vue'] = 'vue/dist/vue.common';
         },
+        transpile: ['gsap'],
 
         babel: {
             presets() {
                 return [
                     ["@nuxt/babel-preset-app", { corejs: { version: 3 } }]
+                ]
+            },
+            plugins() {
+                return [
+                    "@babel/plugin-proposal-function-bind"
                 ]
             }
         }
@@ -148,5 +160,11 @@ module.exports = {
         whitelist: [
             // 'css-selector-to-whitelist'
         ],
+    },
+
+    pageTransition: {
+      leave(el, done) {
+        this.$nuxt.$emit('loader-leave', { el, done });
+      },
     },
 };

@@ -1,28 +1,67 @@
 <template>
-    <section class="container">
-        <diag-line></diag-line>
-        about
+    <section class="view view--about" data-color="lime">
+        <h1>about</h1>
+        <LocomotiveScroll ref="scroller">
+            <div class="wrapper">
+                <InfoFrameIntro></InfoFrameIntro>
+                <InfoFrame v-for="(frame, i) in infoFrames" :key="i" :data="frame"></InfoFrame>
+            </div>
+        </LocomotiveScroll>
     </section>
 </template>
 
 <script>
-    import DiagLine from '~/components/svg/DiagLine.vue';
+import InfoFrame from '~/components/about/InfoFrame.vue';
+import InfoFrameIntro from '~/components/about/InfoFrameIntro.vue';
 
-    export default {
-        components: {
-            'diag-line': DiagLine,
-        },
+import aboutQuery from '~/queries/about.gql';
 
-        head() {
-            return {
-                title: 'about | netherwaves'
+export default {
+    head() {
+        return {
+            title: 'about | netherwaves'
+        }
+    },
+
+    data() {
+        return {
+            entry: {}
+        }
+    },
+
+    computed: {
+        infoFrames() {
+            return this.entry?.infoFrame;
+        }
+    },
+
+    components: {
+        'InfoFrame': InfoFrame,
+        'InfoFrameIntro': InfoFrameIntro,
+    },
+
+    mounted() {
+        this.$nuxt.$emit('line-hide');
+    },
+
+    apollo: {
+        about: {
+            query: aboutQuery,
+            update(data) {
+                this.entry = data?.entry;
+
+                this.$nextTick(() => {
+                    this.$nuxt.$emit('loader-enter', { el: this.$el });
+                    this.$nuxt.$emit('update-locomotive');
+                });
             }
         }
     }
+}
 </script>
 
-<style lang="scss">
-.container {
-    position: relative;
+<style lang="scss" scoped>
+.wrapper {
+    padding-bottom: 40vh;
 }
 </style>

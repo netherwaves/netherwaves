@@ -1,9 +1,9 @@
+@use 'sass:math';
+
 /**
  * Basic
  * Tools
  */
-
- @use "sass:math";
 
 @mixin font-size($size, $base: 16px ) {
 	font-size: #{$size};
