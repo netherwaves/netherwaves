@@ -172,14 +172,14 @@ module.exports = {
         ],
     },
 
-    server: {
-        port: process.env.PORT,
-        host: process.env.HOST,
-        https: {
-            key: fs.readFileSync(path.resolve(process.env.CERT_LOCATION, 'privkey.pem')),
-            cert: fs.readFileSync(path.resolve(process.env.CERT_LOCATION, 'fullchain.pem'))
-        }
-    },
+    // server: {
+    //     port: process.env.PORT,
+    //     host: process.env.HOST,
+    //     https: {
+    //         key: fs.readFileSync(path.resolve(process.env.CERT_LOCATION, 'privkey.pem')),
+    //         cert: fs.readFileSync(path.resolve(process.env.CERT_LOCATION, 'fullchain.pem'))
+    //     }
+    // },
 
     pageTransition: {
       leave(el, done) {
