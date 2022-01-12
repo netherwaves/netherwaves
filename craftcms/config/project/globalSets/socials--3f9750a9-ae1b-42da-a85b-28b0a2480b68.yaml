@@ -1,0 +1,59 @@
+fieldLayouts:
+  f6e12add-da67-446e-afd6-1ab5d7dfc4c6:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 367abd4d-310b-4f93-8797-a54d9340f7ae # Email
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Personal
+        sortOrder: 1
+      -
+        elements:
+          -
+            fieldUid: 64a48c14-fb39-410c-88d9-ee786537c2aa # Bandcamp
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: d54076ef-cd3f-4ba4-9b17-5ff32db09edd # SoundCloud
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 30dbd541-d861-4245-9488-a1c25d8656c5 # Twitter
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: e3da23f1-3517-40f1-b0fd-5eff043ebe74 # GitHub
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Socials
+        sortOrder: 2
+handle: socials
+name: Socials
+sortOrder: 1

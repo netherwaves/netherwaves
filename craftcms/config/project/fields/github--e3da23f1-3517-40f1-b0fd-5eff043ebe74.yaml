@@ -1,0 +1,15 @@
+columnSuffix: fwpvrbfd
+contentColumnType: string(255)
+fieldGroup: adce3d5e-a59b-43a4-a811-3e23a696c101 # Socials
+handle: github
+instructions: ''
+name: GitHub
+searchable: false
+settings:
+  maxLength: '255'
+  placeholder: null
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Url

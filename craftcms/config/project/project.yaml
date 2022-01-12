@@ -1,4 +1,4 @@
-dateModified: 1641738607
+dateModified: 1641954175
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SITE_NAME
@@ -11,28 +11,44 @@ graphql:
     expiryDate: null
 meta:
   __names__:
+    0cbf8446-6459-4b26-a94d-c25335835133: Links # Links
+    1e043c69-453b-4d54-acc6-22fcb01f7890: Collaborators # Collaborators
+    2a7cfcf1-149b-4473-8f34-819147dc86fd: Title # Title
+    02b57547-bb54-4fc1-9b7f-3e7e3303cd82: 'Text Frame' # Text Frame
     2f70c8d6-323e-4b38-8737-e17596de51c1: Works # Works
-    3f9750a9-ae1b-42da-a85b-28b0a2480b68: Location # Location
+    3f9750a9-ae1b-42da-a85b-28b0a2480b68: Socials # Socials
+    5df3b54f-da48-4b2d-885e-6bc9ba50c2ac: Summary # Summary
     5e3f228d-3db1-4546-ab5e-389f4f36ec12: SEO # SEO
     6a6c1ec5-7161-4cea-ae56-ed2383fdb7da: Works # Works
     6daed0b6-7adb-4445-a58e-c09b7406418e: Navigation # Navigation
     8a58b2d5-25c9-4778-8539-75d647defee3: URL # URL
     08b69f49-f9aa-47e7-9e5b-ea22fbfe7820: 'News Articles' # News Articles
     8b80735b-94a1-4576-ae01-8334ebcfeba0: Client # Client
+    9e599f7e-173c-416c-9fa7-125a5dfa6f21: About # About
     14caf314-7482-49ee-a507-ed522a769a10: Place # Place
+    23bd2e33-b6a7-4f19-b6cc-ed23eb1f7828: Content # Content
+    30dbd541-d861-4245-9488-a1c25d8656c5: Twitter # Twitter
     37a1fa9d-06dd-4299-bc73-d0ecfde9861f: Year # Year
     49df95d1-9335-456f-9975-732e1f464aec: Topics # Topics
+    64a48c14-fb39-410c-88d9-ee786537c2aa: Bandcamp # Bandcamp
+    367abd4d-310b-4f93-8797-a54d9340f7ae: Email # Email
+    569a8c40-8abf-44eb-ae77-3c4ae1b1830a: Uploads # Uploads
     728e68fc-7333-4d76-9aa9-f8b1ec45263b: Address # Address
     899ea362-fe9d-45d1-94c6-288e29f7a695: 'News Index' # News Index
     926f2453-0f6c-4ce8-ad35-0f40037e78d7: News # News
     2183c3f5-1027-4c15-a9e6-0e9e1c486010: Type # Type
     19334b67-3de4-4763-9eff-3f56e0fd2a3f: Phone # Phone
+    adce3d5e-a59b-43a4-a811-3e23a696c101: Socials # Socials
     aeaba914-7f69-4d49-85aa-0a9be07aa22d: Body # Body
     b6368dc6-dc02-4dbf-a428-d319b8ee6c8d: About # About
+    b80213bd-b2fa-4a00-a997-5d84c8f5b96b: Subtitle # Subtitle
     c2b1444f-2462-4c5c-ab43-54ffb9118db0: 'News Index' # News Index
     c8e09e4d-ab6a-4881-ab1a-6538e88b3eaa: About # About
     c19db8b1-6e8c-4d55-b29d-fa429a504ca4: 'Postal Code' # Postal Code
     c6539bc1-9ff0-4675-a03c-5a6dcc515113: Contact # Contact
+    d761b95a-3218-4e96-9c97-9644fcbc56a6: 'Info Frame' # Info Frame
+    d54076ef-cd3f-4ba4-9b17-5ff32db09edd: SoundCloud # SoundCloud
+    e3da23f1-3517-40f1-b0fd-5eff043ebe74: GitHub # GitHub
     e12346ce-c5fe-4fea-a34b-6a64807f0ce0: Contact # Contact
     ec81f43c-bc31-4410-bf00-9cc36e97cdc2: Navigation # Navigation
 plugins:
@@ -58,6 +74,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.5
+    settings:
+      catchAllActive: false
+      catchAllTemplate: ''
+      redirectsActive: true
   seomatic:
     edition: standard
     enabled: true
