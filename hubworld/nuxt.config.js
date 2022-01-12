@@ -85,7 +85,7 @@ module.exports = {
      * Proxy module configuration
      */
     proxy: {
-        [process.env.GRAPHQL_PATH]: process.env.BACKEND_URL,
+        [process.env.GRAPHQL_PATH]: { target: process.env.BACKEND_URL, changeOrigin: true },
         '/actions': process.env.BACKEND_URL,
         '/robots.txt': process.env.BACKEND_URL,
         '/humans.txt': process.env.BACKEND_URL,
