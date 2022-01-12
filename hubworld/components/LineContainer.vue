@@ -22,6 +22,12 @@ export default {
         'sphere': Sphere,
     },
 
+    data() {
+        return {
+            isFanDown: false
+        }
+    },
+
     beforeMount() {
         this.$scrollMask = this.$el.querySelector(".scroll-mask");
 
@@ -30,6 +36,10 @@ export default {
         this.$nuxt.$on('line-side', ::this.onLineSide);
         this.$nuxt.$on('line-hide', ::this.onLineHide);
         this.$nuxt.$on('line-error', ::this.onLineError);
+
+        this.$nuxt.$on('fan-down', ::this.fanDown);
+        this.$nuxt.$on('fan-up', ::this.fanUp);
+
         this.$nuxt.$on('loader-enter', ::this.onLoaderEnter);
     },
 
@@ -78,6 +88,31 @@ export default {
             this.moveLine(tl, 0);
             this.toggleScrollMask(true);
             this.$refs.sphere.rescale(tl, 0);
+        },
+
+        fanDown() {
+            if (this.isFanDown) return;
+            this.isFanDown = true;
+
+            if (this.fanTL) this.fanTL.kill();
+            this.fanTL = gsap.timeline();
+
+            this.fanTL.set(this.$refs.line, { transformOrigin: '0 100%' }, 0);
+            this.fanTL.to(this.$refs.line, { duration: 0.6, rotation: 5, ease: 'power2.out', force3D: true }, 0);
+        },
+        fanUp() {
+            if (!this.isFanDown) return;
+            this.isFanDown = false;
+
+            if (this.fanTL) this.fanTL.kill();
+            this.fanTL = gsap.timeline({ clearProps: true });
+
+            this.fanTL.to(this.$refs.line, { duration: 2, rotation: 0, ease: 'power3.inOut', force3D: true }, 0);
+            this.fanTL.set(this.$refs.line, { transformOrigin: '0 100%' });
+        },
+
+        onResize() {
+
         },
 
         // animations

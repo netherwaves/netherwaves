@@ -1,5 +1,7 @@
 <template>
-    <section class="view view--home" data-color="fuschia"></section>
+    <section class="view view--home" data-color="fuschia">
+        <h1>netherwaves</h1>
+    </section>
 </template>
 
 <script>

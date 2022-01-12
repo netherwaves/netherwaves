@@ -1,5 +1,6 @@
 <template>
     <section class="view view--about" data-color="lime">
+        <h1>about</h1>
         <LocomotiveScroll ref="scroller">
             <div class="wrapper">
                 <InfoFrameIntro></InfoFrameIntro>

@@ -3,7 +3,13 @@
         <LocomotiveScroll>
             <div class="wrapper">
                 <div class="row">
-                    <work @mouseenter.native="onMouseEnter" @mouseleave.native="onMouseLeave" v-for="(work, i) in works" :key="i" :data="work"></work>
+                    <work
+                        @mouseenter="onMouseEnter"
+                        @mouseleave="onMouseLeave"
+                        v-for="(work, i) in works"
+                        :key="i"
+                        :data="work"
+                    ></work>
                 </div>
             </div>
         </LocomotiveScroll>
@@ -11,79 +17,98 @@
 </template>
 
 <script>
-    import WorkListItem from '~/components/WorkListItem.vue';
+import gsap from "gsap";
 
-    import meta from '~/plugins/page-meta.mixin.js';    // TODO: FIX THIS
-    import worksQuery from '~/queries/works.gql';
+import WorkListItem from "~/components/WorkListItem.vue";
 
-    export default {
-        components: {
-            'work': WorkListItem,
+import meta from "~/plugins/page-meta.mixin.js"; // TODO: FIX THIS
+import worksQuery from "~/queries/works.gql";
+
+export default {
+    components: {
+        work: WorkListItem,
+    },
+
+    data() {
+        return {
+            entries: {},
+        };
+    },
+
+    computed: {
+        works() {
+            return this.entries?.edges?.map((edge) => edge.node);
+        },
+    },
+
+    head() {
+        return {
+            title: "works | netherwaves",
+        };
+    },
+
+    mounted() {
+        this.$nuxt.$emit("line-down");
+    },
+
+    methods: {
+        onMouseEnter({ currentTarget }) {
+            if (!currentTarget.querySelector(".work__container > a")) return;
+
+            this.$el.classList.add("work-hovered");
+            currentTarget
+                .querySelector(".work__container")
+                .classList.add("hovered");
+
+            // fan down
+            if (this.delayedCall) this.delayedCall.kill();
+            this.$nuxt.$emit("fan-down");
         },
 
-        data() {
-            return {
-                entries: {}
-            }
-        },
+        onMouseLeave({ currentTarget }) {
+            if (!currentTarget.querySelector(".work__container > a")) return;
 
-        computed: {
-            works() {
-                return this.entries?.edges?.map(edge => edge.node);
-            }
-        },
+            this.$el.classList.remove("work-hovered");
+            currentTarget
+                .querySelector(".work__container")
+                .classList.remove("hovered");
 
-        head() {
-            return {
-                title: 'works | netherwaves'
-            }
+            // fan up
+            this.delayedCall = gsap.delayedCall(0.3, () => this.$nuxt.$emit("fan-up"));
         },
+    },
 
-        mounted() {
-            this.$nuxt.$emit("line-down");
-        },
-
-        methods: {
-            onMouseEnter({ currentTarget }) {
-                if (!currentTarget.querySelector("a.work__container")) return;
-                this.$el.classList.add("work-hovered");
-                currentTarget.querySelector(".work__container").classList.add("hovered");
+    apollo: {
+        works: {
+            query: worksQuery,
+            variables() {
+                return {
+                    limit: 30,
+                    offset: 0,
+                };
             },
+            update(data) {
+                this.entries = data.entries;
 
-            onMouseLeave({ currentTarget }) {
-                this.$el.classList.remove("work-hovered");
-                currentTarget.querySelector(".work__container").classList.remove("hovered");
+                this.$nextTick(() => {
+                    this.$nuxt.$emit("loader-enter", { el: this.$el });
+                    this.$nuxt.$emit("update-locomotive");
+                });
             },
         },
-
-        apollo: {
-            works: {
-                query: worksQuery,
-                variables() {
-                    return {
-                        limit: 30,
-                        offset: 0
-                    }
-                },
-                update(data) {
-                    this.entries = data.entries;
-
-                    this.$nextTick(() => {
-                        this.$nuxt.$emit('loader-enter', { el: this.$el });
-                        this.$nuxt.$emit('update-locomotive');
-                    });
-                }
-            }
-        }
-    }
+    },
+};
 </script>
 
 <style lang="scss">
-.wrapper {
-    padding-bottom: 60vh;
-}
 
 .view--works {
+    .wrapper {
+        padding-bottom: 60vh;
+        height: 100%;
+        margin: 0;
+    }
+
     &.work-hovered {
         .work__container:not(.hovered) {
             opacity: 0.4;

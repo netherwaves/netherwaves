@@ -1,5 +1,5 @@
 query works($limit: Int!, $offset: Int) {
-    entries: entriesConnection(section: [works], limit: $limit, offset: $offset) {
+    entries: entriesConnection(section: [works], limit: $limit, offset: $offset, orderBy: "workYear DESC") {
         edges {
             node {
                 ... on Works {
@@ -17,8 +17,10 @@ query works($limit: Int!, $offset: Int) {
                         url
                     }
                     links: workLinks {
+                        enable
                         label
                         url
+                        newWindow
                     }
                     summary: workSummary {
                         content

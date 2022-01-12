@@ -1,6 +1,6 @@
 <template>
     <section class="email-contact">
-        <p>for questions, inquiries, commissions, conversations —</p>
+        <p>for questions, collabs, commissions, conversations —</p>
         <ul>
             <li><a class="text-link" :href="mailto">{{ socials.email }}<span class="tooltip"></span></a></li>
         </ul>

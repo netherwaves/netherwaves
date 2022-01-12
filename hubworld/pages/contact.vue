@@ -1,5 +1,7 @@
 <template>
+
     <div class="view view--contact" data-color="teal">
+        <h1>contact</h1>
         <div class="wrapper">
             <div class="row row--h-center">
                 <div class="col-10 contact__container">

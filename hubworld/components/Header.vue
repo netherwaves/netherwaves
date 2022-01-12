@@ -6,10 +6,7 @@
 
         <nav class="header__nav">
             <ul>
-                <li><nuxt-link to="/works" class="flap-text"><span>works</span></nuxt-link></li>
-                <li><nuxt-link to="/about" class="flap-text"><span>about</span></nuxt-link></li>
-                <li><nuxt-link to="/contact" class="flap-text"><span>contact</span></nuxt-link></li>
-                <li><nuxt-link to="/adsf" class="flap-text"><span>asdf</span></nuxt-link></li>
+                <li v-for="(item, i) in navigation" :key="i"><nuxt-link :to="item.href" class="flap-text"><span>{{ item.title }}</span></nuxt-link></li>
             </ul>
         </nav>
     </header>
@@ -35,6 +32,8 @@ export default {
     mounted() {
         this.$el.classList.add("show-line");
         gsap.to(this.$el.querySelectorAll('.flap-text > span'), { y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.2, delay: 0.5 });
+
+        console.log(this.navigation);
     }
 }
 </script>

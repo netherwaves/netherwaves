@@ -1,8 +1,16 @@
-a.text-link {
-    text-decoration: underline;
-    transition: opacity 0.3s ease;
+.text-link {
+    &:not(.disabled) {
+        text-decoration: underline;
+        transition: opacity 0.3s ease;
 
-    &:hover, &:focus {
+        &:hover, &:focus {
+            opacity: 0.5;
+        }
+    }
+
+    &.disabled {
         opacity: 0.5;
-    } 
+        text-decoration: line-through;
+        pointer-events: none;
+    }
 }
