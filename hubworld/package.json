@@ -1,8 +1,8 @@
 {
-    "name": "boilerplate",
+    "name": "netherwaves",
     "version": "1.0.0",
-    "description": "Basic front-end and back-end boilerplate for Nuxt.js together with Craft 3.",
-    "author": "Maarten de Graaf",
+    "description": "My Web Zone :o)",
+    "author": "avery",
     "private": true,
     "scripts": {
         "dev": "nuxt",
