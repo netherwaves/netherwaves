@@ -10,6 +10,11 @@ export default function ({env}) {
 
     return {
         httpEndpoint: env.FRONTEND_URL + env.GRAPHQL_PATH,
+        httpLinkOptions: {
+            fetchOptions: {
+                mode: 'cors'
+            }
+        },
         getAuth: () => 'Bearer ' + env.GRAPHQL_TOKEN,
         cache: new InMemoryCache({fragmentMatcher})
     };
