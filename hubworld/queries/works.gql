@@ -2,7 +2,7 @@ query works($limit: Int!, $offset: Int) {
     entries: entriesConnection(section: [worksChannel], limit: $limit, offset: $offset, orderBy: "workYear DESC") {
         edges {
             node {
-                ... on WorksChannel {
+                ... on WorksChannelWork {
                     title
                     slug
                     uri
