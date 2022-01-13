@@ -32,8 +32,6 @@ export default {
     mounted() {
         this.$el.classList.add("show-line");
         gsap.to(this.$el.querySelectorAll('.flap-text > span'), { y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.2, delay: 0.5 });
-
-        console.log(this.navigation);
     }
 }
 </script>
