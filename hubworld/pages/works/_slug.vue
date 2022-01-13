@@ -12,6 +12,8 @@
             }
         },
 
+        // this.$route.params.slug
+
         mounted() {
             this.$nuxt.$emit("loader-enter", { el: this.$el });
         }
