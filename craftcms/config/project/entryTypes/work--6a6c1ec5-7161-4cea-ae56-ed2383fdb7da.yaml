@@ -122,10 +122,10 @@ fieldLayouts:
             width: 100
         name: Work
         sortOrder: 2
-handle: works
+handle: work
 hasTitleField: true
-name: Works
-section: 2f70c8d6-323e-4b38-8737-e17596de51c1 # Works
+name: work
+section: 2f70c8d6-323e-4b38-8737-e17596de51c1 # works
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

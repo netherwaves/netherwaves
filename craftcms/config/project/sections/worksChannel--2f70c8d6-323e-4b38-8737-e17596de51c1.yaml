@@ -1,15 +1,12 @@
+defaultPlacement: end
 enableVersioning: true
-handle: works
-name: Works
-previewTargets:
-  -
-    label: 'Primary entry page'
-    urlFormat: '{url}'
+handle: worksChannel
+name: works
 propagationMethod: all
 siteSettings:
   95e89cc5-91be-44e4-833a-5d3017e3601f:
     enabledByDefault: true
     hasUrls: true
-    template: ''
+    template: null
     uriFormat: 'works/{slug}'
 type: channel

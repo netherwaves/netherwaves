@@ -1,4 +1,4 @@
-dateModified: 1641954175
+dateModified: 1642093841
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SITE_NAME
@@ -15,11 +15,11 @@ meta:
     1e043c69-453b-4d54-acc6-22fcb01f7890: Collaborators # Collaborators
     2a7cfcf1-149b-4473-8f34-819147dc86fd: Title # Title
     02b57547-bb54-4fc1-9b7f-3e7e3303cd82: 'Text Frame' # Text Frame
-    2f70c8d6-323e-4b38-8737-e17596de51c1: Works # Works
+    2f70c8d6-323e-4b38-8737-e17596de51c1: works # works
     3f9750a9-ae1b-42da-a85b-28b0a2480b68: Socials # Socials
     5df3b54f-da48-4b2d-885e-6bc9ba50c2ac: Summary # Summary
     5e3f228d-3db1-4546-ab5e-389f4f36ec12: SEO # SEO
-    6a6c1ec5-7161-4cea-ae56-ed2383fdb7da: Works # Works
+    6a6c1ec5-7161-4cea-ae56-ed2383fdb7da: work # work
     6daed0b6-7adb-4445-a58e-c09b7406418e: Navigation # Navigation
     8a58b2d5-25c9-4778-8539-75d647defee3: URL # URL
     08b69f49-f9aa-47e7-9e5b-ea22fbfe7820: 'News Articles' # News Articles
@@ -38,18 +38,20 @@ meta:
     926f2453-0f6c-4ce8-ad35-0f40037e78d7: News # News
     2183c3f5-1027-4c15-a9e6-0e9e1c486010: Type # Type
     19334b67-3de4-4763-9eff-3f56e0fd2a3f: Phone # Phone
+    3184148d-ecfb-4d8a-b067-b64a985511c3: 'work index' # work index
     adce3d5e-a59b-43a4-a811-3e23a696c101: Socials # Socials
     aeaba914-7f69-4d49-85aa-0a9be07aa22d: Body # Body
-    b6368dc6-dc02-4dbf-a428-d319b8ee6c8d: About # About
+    b30f1bb3-93a3-4322-b2ea-b828953cf1ec: 'work index' # work index
+    b6368dc6-dc02-4dbf-a428-d319b8ee6c8d: about # about
     b80213bd-b2fa-4a00-a997-5d84c8f5b96b: Subtitle # Subtitle
     c2b1444f-2462-4c5c-ab43-54ffb9118db0: 'News Index' # News Index
-    c8e09e4d-ab6a-4881-ab1a-6538e88b3eaa: About # About
+    c8e09e4d-ab6a-4881-ab1a-6538e88b3eaa: about # about
     c19db8b1-6e8c-4d55-b29d-fa429a504ca4: 'Postal Code' # Postal Code
-    c6539bc1-9ff0-4675-a03c-5a6dcc515113: Contact # Contact
+    c6539bc1-9ff0-4675-a03c-5a6dcc515113: contact # contact
     d761b95a-3218-4e96-9c97-9644fcbc56a6: 'Info Frame' # Info Frame
     d54076ef-cd3f-4ba4-9b17-5ff32db09edd: SoundCloud # SoundCloud
     e3da23f1-3517-40f1-b0fd-5eff043ebe74: GitHub # GitHub
-    e12346ce-c5fe-4fea-a34b-6a64807f0ce0: Contact # Contact
+    e12346ce-c5fe-4fea-a34b-6a64807f0ce0: contact # contact
     ec81f43c-bc31-4410-bf00-9cc36e97cdc2: Navigation # Navigation
 plugins:
   craftql:
@@ -83,6 +85,51 @@ plugins:
     enabled: true
     licenseKey: GD68GO356CC5Y793M9UKA40X
     schemaVersion: 3.0.11
+    settings:
+      addHrefLang: true
+      addPaginatedHreflang: true
+      addXDefaultHrefLang: true
+      alwaysIncludeCanonicalUrls: false
+      cpTitlePrefix: '⚙ '
+      cspNonce: ''
+      cspScriptSrcPolicies:
+        -
+          __assoc__:
+            -
+              - policy
+              - '''self'''
+      devModeCpTitlePrefix: '&#x1f6a7;⚙ '
+      devModeTitlePrefix: '&#x1f6a7; '
+      displayAnalysisSidebar: true
+      displayPreviewSidebar: true
+      enableJsonLdEndpoint: false
+      enableMetaContainerEndpoint: true
+      enableSeoFileLinkEndpoint: false
+      environment: live
+      excludeNonCanonicalUrls: false
+      generatorEnabled: true
+      headersEnabled: true
+      includeHomepageInBreadcrumbs: true
+      lowercaseCanonicalUrl: true
+      manuallySetEnvironment: false
+      maxDescriptionLength: 155
+      maxTitleLength: 70
+      metaCacheDuration: 'null'
+      pluginName: SEOmatic
+      regenerateSitemapsAutomatically: true
+      renderEnabled: true
+      separatorChar: '|'
+      sidebarDisplayPreviewTypes:
+        - google
+        - twitter
+        - facebook
+      siteGroupsSeparate: '1'
+      siteUrlOverride: ''
+      sitemapsEnabled: true
+      socialMediaPreviewTarget: true
+      submitSitemaps: true
+      truncateDescriptionTags: '1'
+      truncateTitleTags: '1'
 system:
   edition: solo
   live: true
