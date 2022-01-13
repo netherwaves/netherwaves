@@ -16,12 +16,10 @@ import InfoFrameIntro from '~/components/about/InfoFrameIntro.vue';
 
 import aboutQuery from '~/queries/about.gql';
 
+import meta from '~/plugins/page-meta.mixin.js';
+
 export default {
-    head() {
-        return {
-            title: 'about | netherwaves'
-        }
-    },
+    mixins: [meta],
 
     data() {
         return {

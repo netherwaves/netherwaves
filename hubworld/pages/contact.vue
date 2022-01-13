@@ -17,12 +17,10 @@
 import EmailContact from '~/components/contact/EmailContact.vue';
 import SocialContact from '~/components/contact/SocialContact.vue';
 
+import meta from '~/plugins/page-meta.mixin.js';
+
     export default {
-        head() {
-            return {
-                title: 'contact | netherwaves'
-            }
-        },
+        mixins: [meta],
 
         components: {
             'EmailContact': EmailContact,

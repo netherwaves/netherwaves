@@ -7,15 +7,13 @@
 <script>
     import CelestialObject from '~/components/CelestialObject.vue';
 
+    import meta from "~/plugins/page-meta.mixin.js";
+
     export default {
+        mixins: [meta],
+
         components: {
             'celest': CelestialObject
-        },
-
-        head() {
-            return {
-                title: 'netherwaves | welcome'
-            }
         },
 
         mounted() {

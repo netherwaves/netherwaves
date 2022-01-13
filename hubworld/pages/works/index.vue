@@ -25,6 +25,8 @@ import meta from "~/plugins/page-meta.mixin.js"; // TODO: FIX THIS
 import worksQuery from "~/queries/works.gql";
 
 export default {
+    mixins: [meta],
+
     components: {
         work: WorkListItem,
     },
@@ -39,12 +41,6 @@ export default {
         works() {
             return this.entries?.edges?.map((edge) => edge.node);
         },
-    },
-
-    head() {
-        return {
-            title: "works | netherwaves",
-        };
     },
 
     mounted() {
