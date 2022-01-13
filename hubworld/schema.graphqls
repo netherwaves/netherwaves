@@ -251,8 +251,6 @@ enum EntryTypesEnum {
   About
   Contact
   Navigation
-  News
-  NewsIndex
   Works
   WorksChannelWork
 }
@@ -304,12 +302,6 @@ type Mutation {
 
   """Create or update existing Navigation."""
   upsertNavigation(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, href: String): Navigation
-
-  """Create or update existing News."""
-  upsertNews(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, body: String, topics: [TopicsCategoryInput], seo: String): News
-
-  """Create or update existing NewsIndex."""
-  upsertNewsIndex(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery, seo: String): NewsIndex
 
   """Create or update existing Works."""
   upsertWorks(id: Int, siteId: Int, authorId: Int, title: String, slug: String, enabled: Boolean, postDate: Timestamp, expiryDate: Timestamp, parentId: Int, query: MutationQuery): Works
@@ -413,63 +405,6 @@ type Navigation implements EntryInterface & ElementInterface {
   href: String
 }
 
-type News implements EntryInterface & ElementInterface {
-  id: Int!
-  author: User!
-  title: String!
-  slug: String!
-  dateCreated: Timestamp!
-  dateUpdated: Timestamp!
-  expiryDate: Timestamp
-  postDate: Timestamp
-  enabled: Boolean!
-  status: String!
-  uri: String
-  url: String
-  section: Section
-  type: EntryType
-  ancestors: [EntryInterface]
-  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, bandcamp: String, body: String, workClient: String, workCollaborators: String, email: String, github: String, workLinks: String, phone: String, place: String, postalCode: String, seo: String, soundcloud: String, workSubtitle: String, workSummary: String, topics: String, twitter: String, workType: String, href: String, workYear: String): [EntryInterface]
-  descendants: [EntryInterface]
-  hasDescendants: Boolean!
-  level: Int
-  parent: EntryInterface
-  siblings: [EntryInterface]
-  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
-  elementType: String
-  body: RedactorFieldData
-  topics: [TopicsCategory]
-  topicsConnection: CategoryConnection
-  seo: String
-}
-
-type NewsIndex implements EntryInterface & ElementInterface {
-  id: Int!
-  author: User!
-  title: String!
-  slug: String!
-  dateCreated: Timestamp!
-  dateUpdated: Timestamp!
-  expiryDate: Timestamp
-  postDate: Timestamp
-  enabled: Boolean!
-  status: String!
-  uri: String
-  url: String
-  section: Section
-  type: EntryType
-  ancestors: [EntryInterface]
-  children(after: String, ancestorOf: Int, ancestorDist: Int, archived: Boolean, authorGroup: String, authorGroupId: Int, authorId: [Int], before: String, level: Int, localeEnabled: Boolean, descendantOf: Int, descendantDist: Int, fixedOrder: Boolean, id: [Int], idNot: [Int], limit: Int, site: String, siteId: Int, nextSiblingOf: Int, offset: Int, order: String, orderBy: String, positionedAfter: Int, positionedBefore: Int, postDate: String, dateCreated: String, dateUpdated: String, prevSiblingOf: Int, relatedTo: [RelatedToInputType], orRelatedTo: [RelatedToInputType], search: String, section: [SectionsEnum], siblingOf: Int, slug: String, status: String, title: String, type: [EntryTypesEnum], uri: String, address: String, bandcamp: String, body: String, workClient: String, workCollaborators: String, email: String, github: String, workLinks: String, phone: String, place: String, postalCode: String, seo: String, soundcloud: String, workSubtitle: String, workSummary: String, topics: String, twitter: String, workType: String, href: String, workYear: String): [EntryInterface]
-  descendants: [EntryInterface]
-  hasDescendants: Boolean!
-  level: Int
-  parent: EntryInterface
-  siblings: [EntryInterface]
-  seomatic(siteId: Int, uri: String, asArray: Boolean): seomaticData
-  elementType: String
-  seo: String
-}
-
 type PageInfo {
   hasPreviousPage: Boolean!
   hasNextPage: Boolean!
@@ -556,8 +491,6 @@ enum SectionsEnum {
   about
   contact
   navigation
-  news
-  newsIndex
   works
   worksChannel
 }
