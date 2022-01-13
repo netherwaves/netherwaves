@@ -1,4 +1,4 @@
-dateModified: 1642093841
+dateModified: 1642098968
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SITE_NAME
@@ -22,7 +22,6 @@ meta:
     6a6c1ec5-7161-4cea-ae56-ed2383fdb7da: work # work
     6daed0b6-7adb-4445-a58e-c09b7406418e: Navigation # Navigation
     8a58b2d5-25c9-4778-8539-75d647defee3: URL # URL
-    08b69f49-f9aa-47e7-9e5b-ea22fbfe7820: 'News Articles' # News Articles
     8b80735b-94a1-4576-ae01-8334ebcfeba0: Client # Client
     9e599f7e-173c-416c-9fa7-125a5dfa6f21: About # About
     14caf314-7482-49ee-a507-ed522a769a10: Place # Place
@@ -34,8 +33,6 @@ meta:
     367abd4d-310b-4f93-8797-a54d9340f7ae: Email # Email
     569a8c40-8abf-44eb-ae77-3c4ae1b1830a: Uploads # Uploads
     728e68fc-7333-4d76-9aa9-f8b1ec45263b: Address # Address
-    899ea362-fe9d-45d1-94c6-288e29f7a695: 'News Index' # News Index
-    926f2453-0f6c-4ce8-ad35-0f40037e78d7: News # News
     2183c3f5-1027-4c15-a9e6-0e9e1c486010: Type # Type
     19334b67-3de4-4763-9eff-3f56e0fd2a3f: Phone # Phone
     3184148d-ecfb-4d8a-b067-b64a985511c3: 'work index' # work index
@@ -44,7 +41,6 @@ meta:
     b30f1bb3-93a3-4322-b2ea-b828953cf1ec: 'work index' # work index
     b6368dc6-dc02-4dbf-a428-d319b8ee6c8d: about # about
     b80213bd-b2fa-4a00-a997-5d84c8f5b96b: Subtitle # Subtitle
-    c2b1444f-2462-4c5c-ab43-54ffb9118db0: 'News Index' # News Index
     c8e09e4d-ab6a-4881-ab1a-6538e88b3eaa: about # about
     c19db8b1-6e8c-4d55-b29d-fa429a504ca4: 'Postal Code' # Postal Code
     c6539bc1-9ff0-4675-a03c-5a6dcc515113: contact # contact
