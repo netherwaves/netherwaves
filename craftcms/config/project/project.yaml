@@ -1,4 +1,4 @@
-dateModified: 1642098968
+dateModified: 1642099080
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SITE_NAME
@@ -15,6 +15,7 @@ meta:
     1e043c69-453b-4d54-acc6-22fcb01f7890: Collaborators # Collaborators
     2a7cfcf1-149b-4473-8f34-819147dc86fd: Title # Title
     02b57547-bb54-4fc1-9b7f-3e7e3303cd82: 'Text Frame' # Text Frame
+    2e242a0a-8431-4cfc-8b7b-3a03807329a9: home # home
     2f70c8d6-323e-4b38-8737-e17596de51c1: works # works
     3f9750a9-ae1b-42da-a85b-28b0a2480b68: Socials # Socials
     5df3b54f-da48-4b2d-885e-6bc9ba50c2ac: Summary # Summary
@@ -49,6 +50,7 @@ meta:
     e3da23f1-3517-40f1-b0fd-5eff043ebe74: GitHub # GitHub
     e12346ce-c5fe-4fea-a34b-6a64807f0ce0: contact # contact
     ec81f43c-bc31-4410-bf00-9cc36e97cdc2: Navigation # Navigation
+    f280fed5-7fc6-45df-a9e9-5296769f5408: home # home
 plugins:
   craftql:
     edition: standard
