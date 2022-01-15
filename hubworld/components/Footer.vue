@@ -1,10 +1,17 @@
 <template>
     <footer>
-        <div class="left flap-text">
-            <span>{{ formattedDate }}</span>
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-12">
+                    <div class="left flap-text">
+                        <span class="desktop">{{ formattedDate }}</span>
+                        <span class="mobile">{{ mobileDate }}</span>
+                    </div>
+                    <span class="center flap-text"><span><span>{{ time.year }}</span><span>NO RIGHTS RESERVED</span></span></span>
+                    <span class="right flap-text"><span>{{ hour }}<span class="colon">:</span>{{ minute }} {{ dayHalf }}</span></span>
+                </div>
+            </div>
         </div>
-        <span class="center flap-text"><span><span>{{ time.year }}</span><span>NO RIGHTS RESERVED</span></span></span>
-        <span class="right flap-text"><span>{{ hour }}<span class="colon">:</span>{{ minute }} {{ dayHalf }}</span></span>
     </footer>
 </template>
 
@@ -21,7 +28,10 @@ import gsap from 'gsap';
 
         computed: {
             formattedDate() {
-                return (this.toWords(this.time.day) + ' ' + this.toWords(this.time.month + 1)).toUpperCase();
+                return `${ this.toWords(this.time.day) } ${ this.toWords(this.time.month + 1) }`.toUpperCase();
+            },
+            mobileDate() {
+                return `${ String(this.time.month + 1).padStart(2, '0') }.${ this.time.day }`;
             },
 
             hour() {
@@ -56,7 +66,7 @@ import gsap from 'gsap';
 
         created() {
             this.getTime();
-            this.interval = setInterval(this.getTime, 1000);
+            this.interval = setInterval(::this.getTime, 1000);
         },
 
         mounted() {
@@ -72,15 +82,13 @@ import gsap from 'gsap';
 
 <style lang="scss">
 footer {
-    padding: 1.5rem;
+    padding-bottom: 1.5rem !important;
+
     font-size: 21px;
-
-    @include dynamicBg;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     position: relative;
     z-index: 10;
+
+    @include dynamicBg;
 
     &::after {
         content: '';
@@ -99,7 +107,21 @@ footer {
     }
 
     &.show-line::after {
-        transform: scaleX(1);
+        transform: scaleX(1) !important;
+    }
+
+    .col-12 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .left {
+        .mobile { display: none; }
+
+        @media (max-width: $tablet) {
+            .desktop { display: none; }
+            .mobile { display: inline-block; }
+        }
     }
 
     .center {

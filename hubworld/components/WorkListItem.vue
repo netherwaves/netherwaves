@@ -54,6 +54,13 @@
 export default {
     props: ["data"],
 
+    mounted() {
+        this.$workRight = this.$el.querySelector(".work__right");
+
+        window.addEventListener("resize", ::this.onResize);
+        this.onResize();
+    },
+
     data() {
         return {
             hasEntered: false,
@@ -72,16 +79,16 @@ export default {
             this.hasEntered = false;
             this.$emit("mouseleave", { currentTarget });
         },
+
+        onResize() {
+            if (this.$workRight) {
+                this.$workRight.style.setProperty("--scroll-height", `${ this.$workRight.scrollHeight }px`);
+            }
+        },
+
         onClick(e) {
             if (document.body.classList.contains("mobile")) {
                 e.preventDefault();
-
-                const $workRight = e.currentTarget.nextElementSibling;
-                if ($workRight) {
-                    $workRight.style.setProperty("--scroll-height", `${ $workRight.scrollHeight }px`);
-                }
-
-                this.onMouseEnter(e);
             }
         }
     },
@@ -156,13 +163,17 @@ export default {
         padding: 0 0 1.5rem;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.5s ease, height 0.5s ease;
+        transition: opacity 0.5s ease, height 0.5s ease 0.3s;
         text-align: right;
-        height: 0;
+        height: 0px;
+
+        @media (max-width: $tablet) {
+            padding: 0;
+        }
 
         .work__container.hovered & {
             pointer-events: all;
-            transition-delay: 0.3s;
+            transition-delay: 0.3s, 0s;
             opacity: 1;
         }
 
@@ -196,8 +207,7 @@ export default {
         &::after {
             content: attr(data-client);
             display: inline-block;
-            font-size: 0.75rem;
-            transform: translateY(-90%);
+            font-size: 0.5em;
             margin-left: 0.25rem;
         }
     }
@@ -244,6 +254,7 @@ export default {
             padding-right: 0;
             transform: translateY(-100%);
             padding-bottom: 1rem;
+            z-index: -1;
         }
     }
 }
