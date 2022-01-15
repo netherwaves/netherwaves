@@ -4,8 +4,9 @@
             <a
                 v-if="data.links && data.links.length"
                 :href="data.links[0].url"
-                class="col-6 offset-2 work__left"
+                class="col-6 offset-2 col-tablet-8 offset-tablet-0 work__left"
                 @mouseenter="onMouseEnter"
+                @click="onClick"
             >
                 <div class="work__title-container">
                     <p class="work__year">{{ data.year }}</p>
@@ -15,7 +16,7 @@
             </a>
             <div
                 v-else
-                class="col-6 offset-2 work__left"
+                class="col-6 offset-2 col-tablet-8 offset-tablet-0 work__left"
                 @mouseenter="onMouseEnter"
             >
                 <div class="work__title-container">
@@ -24,7 +25,7 @@
                 </div>
                 <h3 class="work__subtitle">{{ data.subtitle || "A/V" }}</h3>
             </div>
-            <div class="col-3 offset-1 work__right">
+            <div class="col-3 offset-1 col-tablet-12 offset-tablet-0 work__right">
                 <div
                     class="work__summary"
                     v-if="data.summary"
@@ -71,29 +72,62 @@ export default {
             this.hasEntered = false;
             this.$emit("mouseleave", { currentTarget });
         },
+        onClick(e) {
+            if (document.body.classList.contains("mobile")) {
+                e.preventDefault();
+
+                const $workRight = e.currentTarget.nextElementSibling;
+                if ($workRight) {
+                    $workRight.style.setProperty("--scroll-height", `${ $workRight.scrollHeight }px`);
+                }
+
+                this.onMouseEnter(e);
+            }
+        }
     },
 };
 </script>
 
 <style lang="scss" scoped>
 .work {
-    margin-top: 1.5rem;
     width: 100%;
+
+    &:not(:first-child) {
+        margin-top: 1.5rem;
+    }
 
     &__container {
         position: relative;
         display: flex;
         align-items: flex-end;
         transition: opacity 0.4s ease;
+        padding: 0 0.5rem;
 
         &.hovered {
             z-index: 2;
+
+            @media (max-width: $tablet) {
+                .mobile & {
+                    .work__right {
+                        height: var(--scroll-height);
+                    }
+                }
+            }
+        }
+
+        @media (max-width: $tablet) {
+            display: block;
         }
     }
 
     &__left {
+        display: block;
         position: relative;
         padding: 0 0 1.5rem;
+
+        @media (max-width: $tablet) {
+            padding-bottom: 1rem;
+        }
 
         &::after {
             content: "";
@@ -117,12 +151,14 @@ export default {
     }
 
     &__right {
+        display: block;
         position: relative;
         padding: 0 0 1.5rem;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.5s ease;
+        transition: opacity 0.5s ease, height 0.5s ease;
         text-align: right;
+        height: 0;
 
         .work__container.hovered & {
             pointer-events: all;
@@ -136,6 +172,10 @@ export default {
             padding: 1rem 1.5rem 1.5rem 0;
             margin-right: -1rem;
             width: 100%;
+
+            @media (max-width: $tablet) {
+                margin-right: 0;
+            }
         }
     }
 
@@ -144,6 +184,10 @@ export default {
         text-transform: uppercase;
         font-size: 1.5rem;
         position: relative;
+
+        @media (max-width: $tablet) {
+            font-size: 21px;
+        }
 
         &-container {
             position: relative;
@@ -170,16 +214,37 @@ export default {
         font-size: 0.75rem;
         white-space: nowrap;
         pointer-events: none;
+
+        @media (max-width: $tablet) {
+            font-size: 10px;
+            position: static;
+        }
     }
 
     &__summary {
         font-size: 16px;
         letter-spacing: 0.02em;
         bottom: 0;
+
+        @media (max-width: $tablet) {
+            text-align: left;
+            top: 0;
+        }
+
+        @media (max-width: $mobile) {
+            font-size: 12px;
+        }
     }
 
     &__links {
         top: 100%;
+
+        @media (max-width: $tablet) {
+            top: 0;
+            padding-right: 0;
+            transform: translateY(-100%);
+            padding-bottom: 1rem;
+        }
     }
 }
 </style>

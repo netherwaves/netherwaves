@@ -63,6 +63,7 @@ module.exports = {
 
     buildModules: [
         '@nuxtjs/style-resources',
+        '@nuxtjs/device',
     ],
 
     styleResources: {

@@ -125,6 +125,10 @@ footer {
                     left: 50%;
                     transform: translate3d(-50%, 100%, 0);
                     width: 100%;
+
+                    @media (max-width: $mobile) {
+                        display: none;
+                    }
                 }
             }
         }

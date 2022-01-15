@@ -1,8 +1,8 @@
 <template>
     <header class="header">
-        <div class="header__title">
+        <span class="header__title">
             <Logo></Logo>
-        </div>
+        </span>
 
         <nav class="header__nav">
             <ul>
@@ -44,6 +44,10 @@ export default {
     position: sticky;
     top: 0;
 
+    @media (max-width: $mobile) {
+        padding: 1.5rem 1rem;
+    }
+
     &::after {
         content: '';
         display: block;
@@ -69,9 +73,15 @@ export default {
     display: flex;
     justify-content: space-between;
 
-    &__nav ul {
-        display: flex;
-        column-gap: 4rem;
+    &__nav {
+        @media (max-width: $mobile) {
+            display: none;
+        }
+
+        ul {
+            display: flex;
+            column-gap: 4rem;
+        }
     }
 }
 </style>

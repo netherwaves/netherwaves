@@ -30,6 +30,22 @@
             'line-container': LineContainer,
         },
 
+        beforeMount() {
+            // Browsers
+            if (this.$device.isFirefox) {
+                document.body.classList.add('firefox');
+            } else if (this.$device.isSafari) {
+                document.body.classList.add('safari');
+            }
+
+            // Devices
+            if (this.$device.isDesktop) {
+                document.body.classList.add('desktop');
+            } else if (this.$device.isMobileOrTablet) {
+                document.body.classList.add('mobile');
+            }
+        },
+
         mounted() {
             this.$nuxt.$on('loco-scroll', this.scrollAnimations);
         },

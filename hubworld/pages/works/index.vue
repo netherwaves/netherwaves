@@ -103,6 +103,11 @@ export default {
         padding-bottom: 60vh;
         height: 100%;
         margin: 0;
+
+        @media (max-width: $tablet) {
+            padding-bottom: 20vh;
+            overflow-x: hidden;
+        }
     }
 
     &.work-hovered {

@@ -42,7 +42,7 @@
 	&--v-stretch {
 		align-items: stretch;
 	}
-	
+
 	&--center {
 		justify-content: center;
 		align-items: center;
@@ -131,6 +131,29 @@
 	}
 
 	.offset-tabletH-0 {
+		margin-left: 0;
+	}
+}
+@media screen and (max-width: $tablet) {
+	@for $i from 1 through $num_cols {
+		.col-tablet-#{$i} {
+			@include col('width', $i, $num_cols);
+
+			.ie & {
+				@include colIE('width', $i, $num_cols);
+			}
+		}
+
+		.offset-tablet-#{$i} {
+			@include col('margin-left', $i, $num_cols);
+
+			.ie & {
+				@include colIE('margin-left', $i, $num_cols);
+			}
+		}
+	}
+
+	.offset-tablet-0 {
 		margin-left: 0;
 	}
 }
