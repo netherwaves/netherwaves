@@ -10,8 +10,15 @@
 import gsap from 'gsap';
 
 export default {
+    data() {
+        return {
+            allowRepeat: false
+        }
+    },
+
     mounted() {
-        this.$nuxt.$on('loader-leave', ::this.onLoaderLeave);
+        this.$nuxt.$on('sphere-blink', ::this.onSphereBlink);
+        this.$nuxt.$on('loader-enter', ::this.onLoaderEnter);
     },
 
     methods: {
@@ -21,12 +28,28 @@ export default {
             } }, scale === 0 ? {} : { visibility: 'visible' }), 0);
         },
 
-        onLoaderLeave() {
-            const tl = gsap.timeline();
-            const $ripples = this.$el.querySelectorAll(".ripple");
+        onSphereBlink() {
+            if (this.blinkTL) return;
 
-            tl.fromTo($ripples, { autoAlpha: 1 }, { autoAlpha: 0, delay: 0.1, duration: .7, ease: 'power1.out', stagger: 0.2 }, 0);
-            tl.fromTo($ripples, { scale: 1 }, { scale: 1.3, ease: 'power3.out', duration: 1.2, stagger: 0.2 }, 0);
+            this.blinkTL = gsap.timeline({ onComplete: () => {
+                if (this.allowRepeat) {
+                    this.blinkTL.restart();
+                    this.blinkTL.play();
+                } else {
+                    this.blinkTL.kill();
+                    this.blinkTL = null;
+                }
+            } });
+            this.allowRepeat = true;
+
+            const $ripples = this.$el.querySelectorAll(".ripple");
+            this.blinkTL.fromTo($ripples, { autoAlpha: 1 }, { autoAlpha: 0, delay: 0.1, duration: .7, ease: 'power1.out', stagger: 0.2 }, 0);
+            this.blinkTL.fromTo($ripples, { scale: 1 }, { scale: 1.3, ease: 'power3.out', duration: 1.2, stagger: 0.2 }, 0);
+        },
+
+        onLoaderEnter() {
+            if (!this.blinkTL) return;
+            this.allowRepeat = false;
         },
     }
 }

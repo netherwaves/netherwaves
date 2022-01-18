@@ -82,11 +82,15 @@ import gsap from 'gsap';
 
 <style lang="scss">
 footer {
-    padding-bottom: 1.5rem !important;
+    padding: 1.5rem 0;
 
     font-size: 21px;
     position: relative;
     z-index: 10;
+
+    .wrapper {
+        padding-top: 0;
+    }
 
     @include dynamicBg;
 

@@ -6,7 +6,9 @@
 
         <nav class="header__nav">
             <ul>
-                <li v-for="(item, i) in navigation" :key="i"><nuxt-link :to="item.href" class="flap-text"><span>{{ item.title }}</span></nuxt-link></li>
+                <li v-for="(item, i) in navigation" :key="i">
+                    <GeneralLink class="flap-text" :data="{ url: item.href }"><span>{{ item.title }}</span></GeneralLink>
+                </li>
             </ul>
         </nav>
     </header>
@@ -17,10 +19,12 @@ import gsap from 'gsap';
 import {mapState} from 'vuex';
 
 import Logo from '~/components/Logo.vue';
+import GeneralLink from '~/components/shared/GeneralLink.vue';
 
 export default {
     components: {
         'Logo': Logo,
+        'GeneralLink': GeneralLink,
     },
 
     computed: {
@@ -32,7 +36,7 @@ export default {
     mounted() {
         this.$el.classList.add("show-line");
         gsap.to(this.$el.querySelectorAll('.flap-text > span'), { y: 0, duration: 0.8, ease: 'power2.out', stagger: 0.2, delay: 0.5 });
-    }
+    },
 }
 </script>
 

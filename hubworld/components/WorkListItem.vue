@@ -4,6 +4,7 @@
             <a
                 v-if="data.links && data.links.length"
                 :href="data.links[0].url"
+                :target="data.links[0].newWindow ? '_blank' : ''"
                 class="col-6 offset-2 col-tablet-8 offset-tablet-0 work__left"
                 @mouseenter="onMouseEnter"
                 @click="onClick"
@@ -64,7 +65,7 @@ export default {
     data() {
         return {
             hasEntered: false,
-        };
+        }
     },
 
     methods: {

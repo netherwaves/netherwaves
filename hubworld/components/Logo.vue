@@ -1,26 +1,33 @@
 <template>
-    <nuxt-link
-        to="/"
+    <GeneralLink
+        :data="{ url: '/' }"
         class="flap-text"
         @mouseenter.native="onMouseEnter"
         @mouseleave.native="onMouseLeave"
-        ><span class="to-split">netherwaves</span></nuxt-link
+        ><span class="to-split">netherwaves</span></GeneralLink
     >
 </template>
 
 <script>
-import gsap from 'gsap';
-import SplitText from 'gsap/SplitText';
+import gsap from "gsap";
+import SplitText from "gsap/SplitText";
+
+import GeneralLink from "~/components/shared/GeneralLink.vue";
 
 export default {
+    components: {
+        GeneralLink: GeneralLink,
+    },
+
     mounted() {
-        this.splitText = new SplitText(this.$el.querySelector(".to-split"), { type: 'chars' });
+        this.splitText = new SplitText(this.$el.querySelector(".to-split"), {
+            type: "chars",
+        });
         this.onMouseLeave();
     },
 
     beforeDestroy() {
-        if (this.splitText)
-            this.splitText.destroy();
+        if (this.splitText) this.splitText.destroy();
 
         this.splitText = null;
     },
@@ -31,13 +38,20 @@ export default {
                 this.driftDelay.kill();
                 this.driftDelay = null;
             }
-            
+
             if (this.drift) {
                 this.drift.kill();
                 this.drift = null;
             }
 
-            gsap.to(this.splitText.chars, { duration: 0.6, ease: 'power3.out', y: 0, x: 0, rotation: 0, force3D: true });
+            gsap.to(this.splitText.chars, {
+                duration: 0.6,
+                ease: "power3.out",
+                y: 0,
+                x: 0,
+                rotation: 0,
+                force3D: true,
+            });
         },
 
         onMouseLeave(e) {
@@ -51,24 +65,38 @@ export default {
                 gsap.to(this.splitText.chars[i], {
                     duration: 0.1,
                     opacity: 0.55,
-                    ease: 'linear',
+                    ease: "linear",
                     delay: i * 0.025,
                     yoyo: true,
-                    repeat: 1
+                    repeat: 1,
                 });
             }
 
             this.drift = gsap.to(this.splitText.chars, {
                 duration: 20,
-                ease: 'power1.inOut',
-                x: () => `${ Math.random() > 0.7 ? Math.floor(Math.random() * 70) - 35 : 0 }%`,
-                y: () => `${ Math.floor(Math.pow(Math.random(), 3) * 100) * (Math.random() > 0.5 ? -1 : 1) }%`,
-                rotation: () => Math.floor(Math.pow(Math.random(), 3) * 15 * (Math.random() > 0.5 ? -1 : 1)),
+                ease: "power1.inOut",
+                x: () =>
+                    `${
+                        Math.random() > 0.7
+                            ? Math.floor(Math.random() * 70) - 35
+                            : 0
+                    }%`,
+                y: () =>
+                    `${
+                        Math.floor(Math.pow(Math.random(), 3) * 100) *
+                        (Math.random() > 0.5 ? -1 : 1)
+                    }%`,
+                rotation: () =>
+                    Math.floor(
+                        Math.pow(Math.random(), 3) *
+                            15 *
+                            (Math.random() > 0.5 ? -1 : 1)
+                    ),
                 force3D: true,
             });
-        }
-    }
-}
+        },
+    },
+};
 </script>
 
 <style lang="scss">
