@@ -61,5 +61,13 @@ export default {
 <style lang="scss" scoped>
 .wrapper {
     padding-bottom: 40vh;
+
+    @media (max-width: $tablet-h) {
+        padding-bottom: 25vh;
+    }
+
+    @media (max-width: $tablet) {
+        padding-bottom: 10vh;
+    }
 }
 </style>

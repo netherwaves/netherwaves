@@ -12,18 +12,38 @@ import gsap from 'gsap';
 export default {
     data() {
         return {
-            allowRepeat: false
+            allowRepeat: false,
+            diameter: 200,
+            scale: 0
         }
     },
 
     mounted() {
+        this.onResize();
+
         this.$nuxt.$on('sphere-blink', ::this.onSphereBlink);
         this.$nuxt.$on('loader-enter', ::this.onLoaderEnter);
+
+        window.addEventListener("resize", ::this.onResize);
     },
 
     methods: {
+        onResize() {
+            if (window.innerWidth <= 768 && this.diameter > 100) {
+                this.diameter = 100;
+                this.rescale(gsap.timeline(), this.scale);
+            }
+
+            if (window.innerWidth > 768 && this.diameter < 200) {
+                this.diameter = 200;
+                this.rescale(gsap.timeline(), this.scale);
+            }
+        },
+
         rescale(tl, scale) {
-            tl.set(this.$el, Object.assign({ width: `${ 200 * scale }px`, onComplete: () => {
+            this.scale = scale;
+
+            tl.set(this.$el, Object.assign({ width: `${ this.diameter * scale }px`, onComplete: () => {
                 if (scale === 0) gsap.set(this.$el, { visibility: 'hidden', delay: 1 });
             } }, scale === 0 ? {} : { visibility: 'visible' }), 0);
         },

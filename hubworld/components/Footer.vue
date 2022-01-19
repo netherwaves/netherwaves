@@ -8,7 +8,7 @@
                         <span class="mobile">{{ mobileDate }}</span>
                     </div>
                     <span class="center flap-text"><span><span>{{ time.year }}</span><span>NO RIGHTS RESERVED</span></span></span>
-                    <span class="right flap-text"><span>{{ hour }}<span class="colon">:</span>{{ minute }} {{ dayHalf }}</span></span>
+                    <span class="right flap-text"><span>{{ hour }}{{ minute }}{{ dayHalf }}</span></span>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@ import gsap from 'gsap';
                 return this.time.minute.toString().padStart(2, '0');
             },
             dayHalf() {
-                return this.time.hour >= 12 ? 'pm' : 'am';
+                return this.time.hour >= 12 ? 'p' : 'a';
             }
         },
 
@@ -84,7 +84,6 @@ import gsap from 'gsap';
 footer {
     padding: 1.5rem 0;
 
-    font-size: 21px;
     position: relative;
     z-index: 10;
 
@@ -190,6 +189,10 @@ footer {
                 animation-iteration-count: infinite;
                 animation-delay: 0s;
                 animation-timing-function: ease-out;
+
+                @media (max-width: $mobile) {
+                    margin-right: 0.5rem;
+                }
             }
         }
 

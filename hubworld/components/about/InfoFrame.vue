@@ -16,7 +16,7 @@ export default {
     font-size: 40px;
     line-height: 1.1;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: max-content 1fr;
     padding-bottom: 2.75rem;
     position: relative;
 
@@ -32,6 +32,18 @@ export default {
             display: block;
             border-bottom: 1px solid $black;
         }
+    }
+
+    @media (max-width: $tablet) {
+        font-size: 21px;
+        padding-bottom: 2rem;
+        &:not(:first-child) { margin-top: 2rem; }
+    }
+
+    @media (max-width: $mobile) {
+        font-size: 18px;
+        padding-bottom: 1.5rem;
+        &:not(:first-child) { margin-top: 1.5rem; }
     }
 
     .title {

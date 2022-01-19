@@ -1,6 +1,6 @@
 <template>
     <section class="email-contact">
-        <p>for questions, collabs, commissions, conversations —</p>
+        <p class="subtitle">for questions, collabs, commissions, conversations —</p>
         <ul>
             <li><a class="text-link" :href="mailto">{{ socials.email }}<span class="tooltip"></span></a></li>
         </ul>
@@ -22,3 +22,15 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+@media (max-width: $tablet) {
+    .subtitle {
+        font-size: 12px;
+    }
+
+    li a {
+        font-size: 16px;
+    }
+}
+</style>
