@@ -1,6 +1,6 @@
 <template>
     <svg class="diag-line" viewBox="0 0 1440 341" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="-0.114896" y1="340.513" x2="1439.89" y2="0.513386" stroke-width="1px" vector-effect="non-scaling-stroke"/>
+        <line x1="-720.1" y1="510.5" x2="2159.9" y2="-169.5" stroke-width="1px" vector-effect="non-scaling-stroke"/>
     </svg>
 </template>
 
@@ -20,6 +20,7 @@ export default {
     display: block;
     width: 100%;
     height: auto;
+    overflow: visible;
 
     line {
         stroke: $black;

@@ -24,13 +24,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media (max-width: $tablet) {
-    .subtitle {
-        font-size: 12px;
-    }
-
-    li a {
-        font-size: 16px;
-    }
-}
 </style>

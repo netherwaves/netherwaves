@@ -28,7 +28,7 @@ import gsap from 'gsap';
 
         computed: {
             formattedDate() {
-                return `${ this.toWords(this.time.day) } ${ this.toWords(this.time.month + 1) }`.toUpperCase();
+                return `${ this.toWords(this.time.month + 1) } ${ this.toWords(this.time.day) }`.toUpperCase();
             },
             mobileDate() {
                 return `${ String(this.time.month + 1).padStart(2, '0') }.${ this.time.day }`;

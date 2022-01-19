@@ -4,9 +4,9 @@
         <h1>contact</h1>
         <div class="wrapper">
             <div class="row row--h-center">
-                <div class="col-10 contact__container">
-                    <EmailContact class="contact-box"></EmailContact>
-                    <SocialContact class="contact-box"></SocialContact>
+                <div class="col-10 col-tablet-12 contact__container">
+                    <EmailContact class="contact-box contact-box__email"></EmailContact>
+                    <SocialContact class="contact-box contact-box__social"></SocialContact>
                 </div>
             </div>
         </div>
@@ -37,18 +37,40 @@ import meta from '~/plugins/page-meta.mixin.js';
 <style lang="scss" scoped>
 .wrapper {
     padding-bottom: 12vh;
+
+    @media (max-width: $mobile) {
+        padding-bottom: 1.5rem;
+        padding-top: 12vh;
+    }
 }
 
 .view--contact {
     height: 100%;
     display: flex;
     align-items: flex-end;
+
+    @media (max-width: $mobile) {
+        align-items: center;
+    }
 }
 
 .contact__container {
     display: grid;
-    align-items: flex-end;
+    grid-template-areas: 'email social';
     grid-template-columns: auto max-content;
+    align-items: flex-end;
+
+    @media (max-width: $mobile) {
+        grid-template-areas: 'email .' 'social .';
+        grid-template-columns: 2fr 1fr;
+        justify-content: flex-start;
+        row-gap: 20vh;
+    }
+}
+
+.contact-box {
+    &__email { grid-area: email; }
+    &__social { grid-area: social; }
 }
 </style>
 
@@ -62,6 +84,17 @@ import meta from '~/plugins/page-meta.mixin.js';
     li {
         font-size: 30px;
         margin: 0.5rem 0;
+    }
+
+    @media (max-width: $mobile) {
+        p {
+            font-size: 12px;
+        }
+
+        li {
+            font-size: 16px;
+            margin: 0.25rem 0;
+        }
     }
 }
 </style>

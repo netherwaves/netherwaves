@@ -1,8 +1,8 @@
 <template>
     <header class="header">
-        <span class="header__title">
+        <div class="header__title">
             <Logo></Logo>
-        </span>
+        </div>
 
         <nav class="header__nav">
             <ul>

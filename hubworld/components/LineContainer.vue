@@ -45,7 +45,7 @@ export default {
 
     mounted() {
         this.tl = gsap.timeline({ paused: true });
-        this.tl.to(this.$refs.line.querySelector("line"), { drawSVG: '100%', duration: 1, ease: 'power2.inOut' });
+        this.tl.to(this.$refs.line.querySelector("line"), { drawSVG: '100%', duration: 2, ease: 'power2.inOut' });
 
         this.tl.play();
     },
