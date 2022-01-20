@@ -61,6 +61,7 @@ export default {
         driftoff() {
             this.$el.style.setProperty("overflow", "visible");
 
+            // opacity sweep
             for (let i = 0; i < this.splitText.chars.length; i++) {
                 gsap.to(this.splitText.chars[i], {
                     duration: 0.1,
@@ -72,7 +73,11 @@ export default {
                 });
             }
 
-            this.drift = gsap.to(this.splitText.chars, {
+            this.drift = this.generateDrift();
+        },
+
+        generateDrift() {
+            return gsap.to(this.splitText.chars, {
                 duration: 20,
                 ease: "power1.inOut",
                 x: () =>
@@ -93,8 +98,12 @@ export default {
                             (Math.random() > 0.5 ? -1 : 1)
                     ),
                 force3D: true,
+                onComplete: () => {
+                    this.drift.kill();
+                    this.drift = this.generateDrift();
+                }
             });
-        },
+        }
     },
 };
 </script>
