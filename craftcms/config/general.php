@@ -29,6 +29,9 @@ return [
 
         // Disable frontend Twig templates
         'headlessMode' => true,
+
+	// Upgrades upload max file size
+	'maxUploadFileSize' => 67108864,
     ],
 
     // Dev environment settings

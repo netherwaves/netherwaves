@@ -1,0 +1,95 @@
+field: d761b95a-3218-4e96-9c97-9644fcbc56a6 # Info Frame
+fieldLayouts:
+  687d5a27-3a82-4ad0-a308-9dde285873da:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 709e8b92-857e-413f-98fa-01755b83e900 # Title
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: aebe3a58-4de7-43e8-bd6e-95fc523f4b23 # Label
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: a4145d92-b496-4bba-b123-8528b0e737f6 # URL
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  709e8b92-857e-413f-98fa-01755b83e900: # Title
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: frameTitle
+    instructions: ''
+    name: Title
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  a4145d92-b496-4bba-b123-8528b0e737f6: # URL
+    columnSuffix: null
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: frameUrl
+    instructions: ''
+    name: URL
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: null
+      types:
+        - url
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  aebe3a58-4de7-43e8-bd6e-95fc523f4b23: # Label
+    columnSuffix: null
+    contentColumnType: text
+    fieldGroup: null
+    handle: frameLabel
+    instructions: ''
+    name: Label
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: linkFrame
+name: 'Link Frame'
+sortOrder: 2

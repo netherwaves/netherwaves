@@ -1,4 +1,4 @@
-dateModified: 1642099080
+dateModified: 1644253518
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SITE_NAME
@@ -33,18 +33,23 @@ meta:
     64a48c14-fb39-410c-88d9-ee786537c2aa: Bandcamp # Bandcamp
     367abd4d-310b-4f93-8797-a54d9340f7ae: Email # Email
     569a8c40-8abf-44eb-ae77-3c4ae1b1830a: Uploads # Uploads
+    709e8b92-857e-413f-98fa-01755b83e900: Title # Title
     728e68fc-7333-4d76-9aa9-f8b1ec45263b: Address # Address
     2183c3f5-1027-4c15-a9e6-0e9e1c486010: Type # Type
     19334b67-3de4-4763-9eff-3f56e0fd2a3f: Phone # Phone
+    260298c5-f8ee-4441-9d26-7fa4af25244c: 'Link Frame' # Link Frame
     3184148d-ecfb-4d8a-b067-b64a985511c3: 'work index' # work index
+    a4145d92-b496-4bba-b123-8528b0e737f6: URL # URL
     adce3d5e-a59b-43a4-a811-3e23a696c101: Socials # Socials
     aeaba914-7f69-4d49-85aa-0a9be07aa22d: Body # Body
+    aebe3a58-4de7-43e8-bd6e-95fc523f4b23: Label # Label
     b30f1bb3-93a3-4322-b2ea-b828953cf1ec: 'work index' # work index
     b6368dc6-dc02-4dbf-a428-d319b8ee6c8d: about # about
     b80213bd-b2fa-4a00-a997-5d84c8f5b96b: Subtitle # Subtitle
     c8e09e4d-ab6a-4881-ab1a-6538e88b3eaa: about # about
     c19db8b1-6e8c-4d55-b29d-fa429a504ca4: 'Postal Code' # Postal Code
     c6539bc1-9ff0-4675-a03c-5a6dcc515113: contact # contact
+    d8c7a1b5-2187-413e-9ed9-e8dcb39db21a: Files # Files
     d761b95a-3218-4e96-9c97-9644fcbc56a6: 'Info Frame' # Info Frame
     d54076ef-cd3f-4ba4-9b17-5ff32db09edd: SoundCloud # SoundCloud
     e3da23f1-3517-40f1-b0fd-5eff043ebe74: GitHub # GitHub
@@ -134,3 +139,6 @@ system:
   name: $SITE_NAME
   schemaVersion: 3.7.8
   timeZone: Europe/Amsterdam
+users:
+  photoSubpath: null
+  photoVolumeUid: 569a8c40-8abf-44eb-ae77-3c4ae1b1830a # Uploads
