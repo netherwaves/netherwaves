@@ -11,6 +11,14 @@ query about {
                         content
                     }
                 }
+                ... on InfoFrameAssetFrame {
+                    __typename
+                    title: frameTitle
+                    label: frameLabel
+                    asset: frameAsset {
+                        url
+                    }
+                }
             }
         }
     }

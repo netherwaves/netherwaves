@@ -1,7 +1,7 @@
 <template>
     <article class="info-frame">
         <h2 class="title">avery<br>{{ age }}<br>they/none</h2>
-        <p class="content">multimedia artist<br>creative developer<br>@ montréal, qc</p>
+        <p class="content">multimedia artist<br>creative developer<br>@ tiohtià:ke (montréal), qc</p>
     </article>
 </template>
 
