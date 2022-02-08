@@ -23,7 +23,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: a4145d92-b496-4bba-b123-8528b0e737f6 # URL
+            fieldUid: a4145d92-b496-4bba-b123-8528b0e737f6 # Asset
             instructions: null
             label: null
             required: true
@@ -54,22 +54,40 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  a4145d92-b496-4bba-b123-8528b0e737f6: # URL
+  a4145d92-b496-4bba-b123-8528b0e737f6: # Asset
     columnSuffix: null
-    contentColumnType: string(255)
+    contentColumnType: string
     fieldGroup: null
-    handle: frameUrl
+    handle: frameAsset
     instructions: ''
-    name: URL
+    name: Asset
     searchable: false
     settings:
-      maxLength: '255'
-      placeholder: null
-      types:
-        - url
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds: null
+      defaultUploadLocationSource: 'volume:569a8c40-8abf-44eb-ae77-3c4ae1b1830a' # Uploads
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: ''
+      selectionLabel: ''
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:569a8c40-8abf-44eb-ae77-3c4ae1b1830a' # Uploads
+      singleUploadLocationSubpath: ''
+      source: null
+      sources:
+        - 'volume:d8c7a1b5-2187-413e-9ed9-e8dcb39db21a' # Files
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: false
+      viewMode: list
     translationKeyFormat: null
-    translationMethod: none
-    type: craft\fields\Url
+    translationMethod: site
+    type: craft\fields\Assets
   aebe3a58-4de7-43e8-bd6e-95fc523f4b23: # Label
     columnSuffix: null
     contentColumnType: text
@@ -90,6 +108,6 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-handle: linkFrame
-name: 'Link Frame'
+handle: assetFrame
+name: 'Asset Frame'
 sortOrder: 2

@@ -1,4 +1,4 @@
-dateModified: 1644253518
+dateModified: 1644268979
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SITE_NAME
@@ -37,9 +37,9 @@ meta:
     728e68fc-7333-4d76-9aa9-f8b1ec45263b: Address # Address
     2183c3f5-1027-4c15-a9e6-0e9e1c486010: Type # Type
     19334b67-3de4-4763-9eff-3f56e0fd2a3f: Phone # Phone
-    260298c5-f8ee-4441-9d26-7fa4af25244c: 'Link Frame' # Link Frame
+    260298c5-f8ee-4441-9d26-7fa4af25244c: 'Asset Frame' # Asset Frame
     3184148d-ecfb-4d8a-b067-b64a985511c3: 'work index' # work index
-    a4145d92-b496-4bba-b123-8528b0e737f6: URL # URL
+    a4145d92-b496-4bba-b123-8528b0e737f6: Asset # Asset
     adce3d5e-a59b-43a4-a811-3e23a696c101: Socials # Socials
     aeaba914-7f69-4d49-85aa-0a9be07aa22d: Body # Body
     aebe3a58-4de7-43e8-bd6e-95fc523f4b23: Label # Label
