@@ -3,14 +3,20 @@
         <h2 class="title">{{ data.title }}</h2>
         <p v-if="data.__typename === 'InfoFrameTextFrame'" class="content" v-html="data.frameContent.content"></p>
         <div v-else-if="data.__typename === 'InfoFrameAssetFrame'">
-            <p class="content"><a class="text-link" :href="data.asset[0].url" target="_blank">{{ data.label }}</a></p>
+            <p class="content"><a class="text-link" :href="reformatUrl(data.asset[0].url)" target="_blank">{{ data.label }}</a></p>
         </div>
     </article>
 </template>
 
 <script>
 export default {
-    props: ['data']
+    props: ['data'],
+
+    methods: {
+        reformatUrl(url) {
+            return url.replace("netherwaves.com", "codex.netherwaves.com");
+        }
+    }
 }
 </script>
 
