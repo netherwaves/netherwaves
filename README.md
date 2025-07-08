@@ -1,2 +1,2 @@
 # netherwaves
-[hubworld](https://netherwaves.com) — ~~codex~~ (in limbo) — [bandcamp](https://netherwaves.bandcamp.com) — [soundcloud](https://soundcloud.com/netherwaves) — [twitter](https://twitter.com/netherwaves)
+[hubworld](https://stillblur.world) — [bandcamp](https://stillblur.bandcamp.com) — [soundcloud](https://soundcloud.com/stillblur) — [bluesky](https://bsky.app/profile/stillblur.world)
